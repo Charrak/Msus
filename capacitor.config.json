@@ -1,0 +1,12 @@
+{
+  "appId": "de.fanapp.blohshhub",
+  "appName": "BLOHSH Hub",
+  "webDir": "dist",
+  "backgroundColor": "#060806",
+  "android": {
+    "backgroundColor": "#060806"
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}

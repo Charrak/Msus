@@ -3,17 +3,24 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "BLOHSH Hub – inoffizielle Billie Eilish Fan-App (News, Konzerte, Merch, TikTok)",
+  "description": "BLOHSH Hub \u2013 inoffizielle Billie Eilish Fan-App (News, Konzerte, Merch, TikTok)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "android:sync": "npm run build && npx cap sync android",
+    "android:open": "npx cap open android",
+    "apk:debug": "npm run android:sync && cd android && ./gradlew assembleDebug",
+    "apk:release": "npm run android:sync && cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
+    "@capacitor/core": "^8.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
     "@vitejs/plugin-react": "^4.3.1",
     "vite": "^5.4.8"
   }
