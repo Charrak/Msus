@@ -50,12 +50,7 @@ jobs:
         run: npx cap sync android
 
       # ---------- nur für Release: Keystore aus Secrets ----------
-      - name: 🔑 Prüfen, ob Release-Secrets vorhanden sind
-        if: env.BUILD_TYPE == 'release' && secrets.ANDROID_KEYSTORE_BASE64 == ''
-        run: |
-          echo "::error::Für einen Release-Build fehlen die Secrets ANDROID_KEYSTORE_BASE64, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD und ANDROID_STORE_PASSWORD (Anleitung im README unter 'APK bauen')."
-          exit 1
-
+      # (Hinweis: "secrets" darf nicht in if-Bedingungen stehen -> Prüfung im Skript)
       - name: 🔑 Keystore aus Secrets wiederherstellen
         if: env.BUILD_TYPE == 'release'
         env:
@@ -64,6 +59,10 @@ jobs:
           KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
         run: |
+          if [ -z "$KEYSTORE_BASE64" ] || [ -z "$KEY_ALIAS" ] || [ -z "$KEY_PASSWORD" ] || [ -z "$STORE_PASSWORD" ]; then
+            echo "::error::Für einen Release-Build fehlen Secrets: ANDROID_KEYSTORE_BASE64, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD, ANDROID_STORE_PASSWORD (Anleitung im README unter 'APK bauen')."
+            exit 1
+          fi
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
           cat > android/keystore.properties <<EOF
           storeFile=$RUNNER_TEMP/release.keystore
