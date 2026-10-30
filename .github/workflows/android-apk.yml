@@ -54,7 +54,14 @@ jobs:
         run: npm run build
 
       - name: 🔄 Capacitor synchronisieren
-        run: npx cap sync android
+        run: |
+          set +e
+          OUT=$(npx cap sync android 2>&1); CODE=$?
+          echo "$OUT"
+          if [ $CODE -ne 0 ]; then
+            echo "$OUT" | tail -25 | sed 's/%/%25/g' | while IFS= read -r l; do echo "::error::CAPSYNC: $l"; done
+          fi
+          exit $CODE
 
       # ---------- nur für Release: Keystore aus Secrets ----------
       # (Hinweis: "secrets" darf nicht in if-Bedingungen stehen -> Prüfung im Skript)
