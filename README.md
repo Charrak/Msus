@@ -24,6 +24,8 @@ npm run build   # Produktions-Build
 
 ## 📱 APK bauen (Android-App)
 
+**▶ Fertige APK herunterladen:** [Release v1.0.0](https://github.com/Charrak/Msus/releases/tag/v1.0.0) (Datei `BLOHSH-Hub-debug.apk`, ~4 MB – direkt aufs Handy laden & installieren)
+
 Die App ist per [Capacitor](https://capacitorjs.com) als echte Android-App verpackbar
 (App-ID `de.fanapp.blohshhub`, Android-Projekt im Ordner `android/`).
 
