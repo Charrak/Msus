@@ -31,20 +31,21 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: ☕ Java 17 einrichten
+      - name: ☕ Java 21 einrichten
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
 
       # Kein setup-android-Action nötig: Das Android SDK ist auf ubuntu-latest vorinstalliert.
       # Wir akzeptieren nur Lizenzen und stellen sicher, dass Plattform 36 + Build-Tools da sind.
       - name: 🤖 Android SDK bereitstellen
         run: |
-          echo "ANDROID_HOME=$ANDROID_HOME"
+          echo "::notice::Java: $(java -version 2>&1 | head -1) | ANDROID_HOME=$ANDROID_HOME | Plattformen vorher: $(ls $ANDROID_HOME/platforms 2>/dev/null | tr '\n' ' ')"
           yes | sdkmanager --licenses > /dev/null 2>&1 || true
-          sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools" > /dev/null
-          sdkmanager --list_installed | head -20
+          sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools" > /dev/null || echo "::warning::sdkmanager-Installation fehlgeschlagen – nutze vorinstallierte Pakete"
+          echo "::notice::Plattformen nachher: $(ls $ANDROID_HOME/platforms 2>/dev/null | tr '\n' ' ') | Build-Tools: $(ls $ANDROID_HOME/build-tools 2>/dev/null | tr '\n' ' ')"
+          test -d "$ANDROID_HOME/platforms/android-36"
 
       - name: 📦 Abhängigkeiten installieren
         run: npm ci
