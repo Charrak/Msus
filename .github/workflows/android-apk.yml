@@ -31,11 +31,11 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: ☕ Java 21 einrichten
+      - name: ☕ Java 17 einrichten
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: '17'
 
       - name: 🤖 Android SDK einrichten
         uses: android-actions/setup-android@v3
