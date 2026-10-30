@@ -38,9 +38,19 @@ const Blohsh = ({ size = 26 }) => (
 )
 
 export default function App() {
-  const [tab, setTab] = useState('start')
+  const TABS = ['start', 'news', 'music', 'konzerte', 'shop', 'tiktok']
+  const fromHash = () => {
+    const h = window.location.hash.replace('#', '').toLowerCase()
+    if (['music', 'musik', 'lieder', 'alben', 'lyrics'].includes(h)) return 'music'
+    return TABS.includes(h) ? h : 'start'
+  }
+  const [tab, setTab] = useState(fromHash)
+  useEffect(() => {
+    const on = () => setTab(fromHash())
+    window.addEventListener('hashchange', on); return () => window.removeEventListener('hashchange', on)
+  }, [])
   const cd = useCountdown()
-  const go = (t) => { setTab(t); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+  const go = (t) => { setTab(t); history.replaceState(null, '', '#' + t); window.scrollTo({ top: 0, behavior: 'smooth' }) }
 
   return (
     <div className="app">
@@ -50,7 +60,7 @@ export default function App() {
           <span>BLOHSH <em>Hub</em></span>
         </div>
         <nav className="topnav">
-          {[['start', '🏠 Start'], ['news', '📰 News'], ['music', '💿 Musik'], ['konzerte', '🎤 Konzerte'], ['shop', '🛍️ Fanartikel'], ['tiktok', '🎵 TikTok']].map(([id, label]) => (
+          {[['start', '🏠 Start'], ['news', '📰 News'], ['music', '💿 Lieder, Alben & Lyrics'], ['konzerte', '🎤 Konzerte'], ['shop', '🛍️ Fanartikel'], ['tiktok', '🎵 TikTok']].map(([id, label]) => (
             <button key={id} className={tab === id ? 'active' : ''} onClick={() => go(id)}>{label}</button>
           ))}
         </nav>
@@ -77,7 +87,7 @@ export default function App() {
       </footer>
 
       <nav className="bottomnav">
-        {[['start', '🏠', 'Start'], ['news', '📰', 'News'], ['music', '💿', 'Musik'], ['konzerte', '🎤', 'Konzerte'], ['shop', '🛍️', 'Shop'], ['tiktok', '🎵', 'TikTok']].map(([id, icon, label]) => (
+        {[['start', '🏠', 'Start'], ['news', '📰', 'News'], ['music', '💿', 'Lieder'], ['konzerte', '🎤', 'Konzerte'], ['shop', '🛍️', 'Shop'], ['tiktok', '🎵', 'TikTok']].map(([id, icon, label]) => (
           <button key={id} className={tab === id ? 'active' : ''} onClick={() => go(id)}><span>{icon}</span>{label}</button>
         ))}
       </nav>
