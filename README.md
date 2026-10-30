@@ -4,6 +4,7 @@ Eine inoffizielle deutschsprachige Fan-Web-App (React + Vite, als PWA installier
 
 ## Features
 - **🏠 Start:** Hero, Glastonbury-2027-Gerücht, Geburtstags-Countdown (18. Dez.), Songzeilen-Generator, Diskografie, **Fan-Quiz** (5 Fragen)
+- **💿 Musik:** Komplette Diskografie (3 Studioalben, 2 EPs, 2 Live-Alben inkl. 2026er 3×LP) mit Erscheinungsdaten, Tracklists und Format-Details zu **LP/CD/Kassette/Digital/Box**, Format-Filter, „Meine Sammlung“-Tracker (LocalStorage), Singles-Zeitleiste, **Lyrics-Hilfe**: Hook-Kurz-Zitate mit deutscher Übersetzung, Song-Erklärungen, Kern-Vokabeln, Volltext-Links (Genius) + **Übersetzer-Tool** (MyMemory-API, DeepL/Google-Fallbacks). Komplette Songtexte werden aus Urheberrechtsgründen nicht reproduziert.
 - **📰 News:** Aktuelle, quellenverlinkte News (Stand 30.10.2026) mit Suche & Kategorie-Filter – Gerüchte sind gekennzeichnet
 - **🎤 Konzerte:** Ehrlicher Tour-Status (aktuell keine bestätigte Tour), offizielle Ticket-Links (Ticketmaster/Live Nation DE), Ticket-Alarm (lokal gespeichert), 3D-Konzertfilm
 - **🛍️ Fanartikel:** Produkte mit Links **nur in die offiziellen Stores** (UK/US), Wunschliste mit ❤️ (LocalStorage), Blohsh-Fake-Check

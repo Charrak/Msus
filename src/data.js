@@ -66,6 +66,18 @@ export const NEWS = [
     url: 'https://www.theguardian.com/music/billie-eilish',
   },
   {
+    id: 'live-album-2026',
+    cat: 'Musik',
+    date: '2026-05-01',
+    dateLabel: '1. Mai 2026',
+    emoji: '📀',
+    tag: 'LIVE-ALBUM',
+    title: '„HIT ME HARD AND SOFT: THE TOUR (LIVE)“ – limitierte 3×LP erschienen',
+    text: 'Passend zum 3D-Film erschien das Live-Album als streng limitierte Einmal-Pressung auf 3 LPs aus 100 % recyceltem, einzigartig gefärbtem Vinyl (mit Lentikular-Beilage) – keine CD/Kassette! Vorab gab es am 24. April die Tour-„INTRO“ als Single. Details & Tracklist findest du im Musik-Bereich der App.',
+    source: 'Skream! / Official Store',
+    url: 'https://en.skream.jp/news/2026/04/billie_eilis_hhit_me_hardand_soft_the_tour_live_lp.php',
+  },
+  {
     id: 'tourette-interview',
     cat: 'Interview',
     date: '2026-05-06',
@@ -98,6 +110,7 @@ export const PRODUCTS = [
   { id: 'hmhas-vinyl', cat: 'Musik', emoji: '💿', name: 'HIT ME HARD AND SOFT – Vinyl / CD', price: 'Preis im Store prüfen', desc: 'Das Album mit „Birds of a Feather“, „Lunch“, „Chihiro“ & Co. als Vinyl und CD.', store: 'US' },
   { id: 'beanie', cat: 'Accessoires', emoji: '🧢', name: 'Hats & Beanies (Kollektion)', price: 'Preis im Store prüfen', desc: 'Beanies, Caps, Bandanas & mehr – direkt aus dem offiziellen Accessories-Bereich.', store: 'UK' },
   { id: 'fragrance', cat: 'Accessoires', emoji: '✨', name: 'Eilish Fragrances (Parfum)', price: 'Über Linktree', desc: 'Billies Duft-Linie inkl. „Eilish Intense“ – über den offiziellen Linktree shoppen.', store: 'LINKTREE' },
+  { id: 'live-3lp', cat: 'Musik', emoji: '📀', name: 'HIT ME HARD AND SOFT: THE TOUR (LIVE) – 3×LP', price: 'Limitiert · Preis im Store', desc: 'NEU 2026: Das Live-Album als Einmal-Pressung auf 3 LPs aus 100 % recyceltem Vinyl mit Lentikular-Beilage. Sammlerstück!', store: 'US' },
   { id: 'hte-vinyl', cat: 'Musik', emoji: '🎵', name: 'Happier Than Ever – Vinyl / CD', price: 'Preis im Store prüfen', desc: 'Das zweite Album (2021) mit dem Titelsong, der live jede Halle zum Beben bringt.', store: 'UK' },
   { id: 'wwafawdwg', cat: 'Musik', emoji: '🛏️', name: 'WHEN WE ALL FALL ASLEEP… – Kollektion', price: 'Preis im Store prüfen', desc: 'Das Debütalbum (2019) – inkl. Upcycled-Merch-Kollektion im UK-Store.', store: 'UK' },
 ]

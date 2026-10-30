@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { NEWS, PRODUCTS, TIKTOK_CREATORS, HASHTAGS, QUOTES, DISCO, QUIZ, OFFICIAL } from './data'
+import Music from './Music'
 
 const storeUrl = (p) => (p.store === 'UK' ? OFFICIAL.storeUK : p.store === 'LINKTREE' ? OFFICIAL.linktree : OFFICIAL.storeUS)
 
@@ -49,7 +50,7 @@ export default function App() {
           <span>BLOHSH <em>Hub</em></span>
         </div>
         <nav className="topnav">
-          {[['start', '🏠 Start'], ['news', '📰 News'], ['konzerte', '🎤 Konzerte'], ['shop', '🛍️ Fanartikel'], ['tiktok', '🎵 TikTok']].map(([id, label]) => (
+          {[['start', '🏠 Start'], ['news', '📰 News'], ['music', '💿 Musik'], ['konzerte', '🎤 Konzerte'], ['shop', '🛍️ Fanartikel'], ['tiktok', '🎵 TikTok']].map(([id, label]) => (
             <button key={id} className={tab === id ? 'active' : ''} onClick={() => go(id)}>{label}</button>
           ))}
         </nav>
@@ -58,6 +59,7 @@ export default function App() {
 
       {tab === 'start' && <Home go={go} cd={cd} />}
       {tab === 'news' && <News />}
+      {tab === 'music' && <Music />}
       {tab === 'konzerte' && <Konzerte cd={cd} />}
       {tab === 'shop' && <Shop />}
       {tab === 'tiktok' && <TikTok />}
@@ -75,7 +77,7 @@ export default function App() {
       </footer>
 
       <nav className="bottomnav">
-        {[['start', '🏠', 'Start'], ['news', '📰', 'News'], ['konzerte', '🎤', 'Konzerte'], ['shop', '🛍️', 'Shop'], ['tiktok', '🎵', 'TikTok']].map(([id, icon, label]) => (
+        {[['start', '🏠', 'Start'], ['news', '📰', 'News'], ['music', '💿', 'Musik'], ['konzerte', '🎤', 'Konzerte'], ['shop', '🛍️', 'Shop'], ['tiktok', '🎵', 'TikTok']].map(([id, icon, label]) => (
           <button key={id} className={tab === id ? 'active' : ''} onClick={() => go(id)}><span>{icon}</span>{label}</button>
         ))}
       </nav>
@@ -130,10 +132,10 @@ function Home({ go, cd }) {
       </section>
 
       <section>
-        <h2 className="section-title">💿 Die Alben <a href={OFFICIAL.spotify} target="_blank" rel="noreferrer" className="more">Auf Spotify hören ↗</a></h2>
+        <h2 className="section-title">💿 Die Alben <button className="more btn-link" onClick={() => go('music')}>Diskografie, Formate & Lyrics →</button></h2>
         <div className="disco">
           {DISCO.map((a) => (
-            <div className="album" key={a.title} style={{ '--ac': a.color }}>
+            <div className="album clickable" key={a.title} style={{ '--ac': a.color }} onClick={() => go('music')} title="Zum Musik-Bereich">
               <span className="year">{a.year}</span><h4>{a.title}</h4><p>{a.hits}</p>
             </div>
           ))}
