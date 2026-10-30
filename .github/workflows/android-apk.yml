@@ -37,8 +37,14 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: 🤖 Android SDK einrichten
-        uses: android-actions/setup-android@v3
+      # Kein setup-android-Action nötig: Das Android SDK ist auf ubuntu-latest vorinstalliert.
+      # Wir akzeptieren nur Lizenzen und stellen sicher, dass Plattform 36 + Build-Tools da sind.
+      - name: 🤖 Android SDK bereitstellen
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools" > /dev/null
+          sdkmanager --list_installed | head -20
 
       - name: 📦 Abhängigkeiten installieren
         run: npm ci
