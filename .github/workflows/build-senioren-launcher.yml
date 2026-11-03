@@ -1,0 +1,111 @@
+name: Senioren Launcher – APK bauen
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['arena/729d04bb-msus']
+    paths:
+      - '.github/workflows/build-senioren-launcher.yml'
+      - '.senioren-build-trigger'
+
+permissions:
+  contents: write
+
+env:
+  ANDROID_HOME: /usr/local/lib/android/sdk
+  ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+
+jobs:
+  build:
+    name: Senioren Launcher Debug-APK bauen und prüfen
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Msus auschecken
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android-SDK vorbereiten
+        run: |
+          set -euo pipefail
+          SDK_MANAGER=$(find "$ANDROID_HOME" -name sdkmanager -type f -print -quit)
+          test -n "$SDK_MANAGER" || { echo "::error::sdkmanager nicht gefunden"; exit 1; }
+          echo "$(dirname "$SDK_MANAGER")" >> "$GITHUB_PATH"
+          export PATH="$(dirname "$SDK_MANAGER"):$PATH"
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools" 2>&1 | tail -20
+          echo "Plattformen: $(ls "$ANDROID_HOME/platforms" | tr '\n' ' ')"
+          echo "Build-Tools: $(ls "$ANDROID_HOME/build-tools" | tr '\n' ' ')"
+
+      - name: Senioren Launcher auschecken
+        run: |
+          set -euo pipefail
+          git clone --depth 1 https://github.com/cma58/senioren-launcher.git sen-launcher
+          echo "Quelle: https://github.com/cma58/senioren-launcher"
+          echo "Build-Commit: $(git -C sen-launcher rev-parse HEAD)"
+          git -C sen-launcher log -1 --oneline
+
+      - name: APK bauen
+        run: |
+          set -euo pipefail
+          cd sen-launcher
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee ../gradle-build.log
+
+      - name: APK prüfen und ausliefern
+        run: |
+          set -euo pipefail
+          mkdir -p apk build-report
+          APP_APK=$(find sen-launcher/app/build/outputs/apk/debug -name '*.apk' -type f | head -1)
+          test -n "$APP_APK"
+          cp "$APP_APK" apk/SeniorenLauncher-v0.8.8-debug.apk
+          AAPT="$ANDROID_HOME/build-tools/36.0.0/aapt"
+          if [ ! -x "$AAPT" ]; then AAPT=$(find "$ANDROID_HOME/build-tools" -name aapt -type f | head -1); fi
+          "$AAPT" dump badging apk/SeniorenLauncher-v0.8.8-debug.apk > build-report/senioren-badging.txt
+          "$AAPT" dump xmltree apk/SeniorenLauncher-v0.8.8-debug.apk AndroidManifest.xml > build-report/senioren-manifest.txt
+          grep -q "android.intent.action.MAIN" build-report/senioren-manifest.txt
+          grep -q "android.intent.category.HOME" build-report/senioren-manifest.txt
+          {
+            echo "Senioren Launcher – Build-Bericht"
+            echo "Quelle: https://github.com/cma58/senioren-launcher"
+            echo "Datum (UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Branch: $GITHUB_REF_NAME"
+            echo "Build-Commit: $(git -C sen-launcher rev-parse HEAD)"
+            echo "APK-Größe: $(stat -c%s apk/SeniorenLauncher-v0.8.8-debug.apk) Byte"
+            echo "SHA-256: $(sha256sum apk/SeniorenLauncher-v0.8.8-debug.apk | cut -d' ' -f1)"
+            echo
+            echo "=== Berechtigungen ==="
+            grep "uses-permission" build-report/senioren-badging.txt || echo "(keine)"
+            echo
+            echo "=== Launcher-Prüfung ==="
+            echo "MAIN + HOME im Manifest gefunden."
+          } > build-report/senioren-apk-info.txt
+          cp gradle-build.log build-report/senioren-gradle-build.log
+          ls -lh apk/SeniorenLauncher-v0.8.8-debug.apk
+
+      - name: APK und Bericht committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f apk/SeniorenLauncher-v0.8.8-debug.apk build-report/senioren-badging.txt build-report/senioren-manifest.txt build-report/senioren-apk-info.txt build-report/senioren-gradle-build.log
+          if git diff --cached --quiet; then
+            echo "Keine Änderung am Build-Ergebnis."
+          else
+            git commit -m "Build: SeniorenLauncher-v0.8.8-debug.apk und Prüfbericht"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+
+      - name: APK als Artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: SeniorenLauncher-APK
+          path: apk/SeniorenLauncher-v0.8.8-debug.apk
+          if-no-files-found: error
