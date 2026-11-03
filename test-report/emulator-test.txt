@@ -1,0 +1,9 @@
+EinfachStart 91 – Emulator-Testbericht
+Datum (UTC): 2026-11-03T21:29:13Z
+Branch: arena/f1d8df85-msus
+Commit: 612e58c3fae17d5645e082e689b3f927b9b89cb7
+Job-Status: failure
+Emulator: Android 14 (API 34), google_apis, x86_64, Pixel-8-Profil
+
+=== Instrumentation-Ausgabe ===
+Keine Ausgabe vorhanden.
