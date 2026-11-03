@@ -47,9 +47,14 @@ jobs:
 
       - name: SDK, Emulator und System-Image installieren
         run: |
+          set -euo pipefail
           yes | sdkmanager --licenses > /dev/null 2>&1 || true
           sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools" "emulator" "system-images;android-35;google_apis;x86_64" 2>&1 | tee sdk-install.log
-          sdkmanager --list_installed | grep 'system-images' || true
+          echo "=== Installierte System-Images ==="
+          sdkmanager --list_installed | grep -i 'system-images' || true
+          SYS_IMG_DIR="$ANDROID_HOME/system-images/android-35/google_apis/x86_64"
+          test -d "$SYS_IMG_DIR" || { echo "::error::System-Image fehlt: $SYS_IMG_DIR"; exit 1; }
+          find "$SYS_IMG_DIR" -maxdepth 2 -type f | head -10
 
       - name: App- und Test-APK bauen
         run: |
@@ -82,7 +87,7 @@ jobs:
             avdmanager list device | grep -i "pixel 8" || true
             echo "=== AVD anlegen ==="
             if ! echo no | avdmanager create avd -n "$AVD_NAME" -k "$SYS_IMAGE" -d pixel_8 --force; then
-              echo "Pixel-8-Profil nicht verfügbar – Standardgerät verwenden"
+              echo "AVD mit pixel_8 nicht erstellt – zweiter Versuch ohne Geräteprofil"
               echo no | avdmanager create avd -n "$AVD_NAME" -k "$SYS_IMAGE" --force
             fi
             echo "=== Angelegte AVDs ==="
@@ -152,10 +157,11 @@ jobs:
           cp gradle-build.log test-report/gradle-build.log 2>/dev/null || true
           cp emulator-test-output.txt test-report/emulator-test-output.txt 2>/dev/null || true
           cp emulator-run.log test-report/emulator-run.log 2>/dev/null || true
+          cp sdk-install.log test-report/sdk-install.log 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f test-report/emulator-test.txt
-          for LOG in test-report/gradle-build.log test-report/emulator-test-output.txt test-report/emulator-run.log; do
+          for LOG in test-report/gradle-build.log test-report/emulator-test-output.txt test-report/emulator-run.log test-report/sdk-install.log; do
             test -f "$LOG" && git add -f "$LOG"
           done
           if git diff --cached --quiet; then
