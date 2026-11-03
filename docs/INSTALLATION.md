@@ -28,7 +28,7 @@ adb install -r apk/EinfachStart91.apk
 
 1. Beim ersten Start kann Android nach der Berechtigung **„Telefonanrufe tätigen“** fragen. Bitte erlauben: Dann genügt ein Tippen auf einen Kontakt für den direkten Anruf. Ohne Berechtigung öffnet sich stattdessen die Wählscheibe mit bereits eingetragener Nummer.
 2. EinfachStart 91 [als Standard-Launcher festlegen](STANDARD-LAUNCHER.md).
-3. Zahnrad oben rechts antippen, eine **PIN erstellen** und die [Kontakte einrichten](KONTAKTE-EINRICHTEN.md).
+3. Kontakte können direkt über ein leeres „+“-Feld oder die **KONTAKTE**-Taste **ohne PIN** aus der Kontaktliste übernommen werden. Für alle übrigen Einstellungen: Zahnrad oben rechts antippen und eine **PIN erstellen** – siehe [Kontakte einrichten](KONTAKTE-EINRICHTEN.md).
 
 ## Wenn die Installation abgelehnt wird
 
@@ -43,5 +43,6 @@ adb install -r apk/EinfachStart91.apk
 | --- | --- |
 | `CALL_PHONE` | Direkter Anruf nach einem Tap auf einen Kontakt oder die Notfallbestätigung |
 | `ACCESS_NETWORK_STATE` / `ACCESS_WIFI_STATE` | Anzeige des WLAN-Gerätestatus in der Verwaltung |
+| `READ_CONTACTS` | Nur nach bewusstem Antippen: Kontakte aus der Geräte-Kontaktliste suchen und Name, Nummer sowie Foto übernehmen |
 
-Es wird **keine** `INTERNET`-, Kontakt-, SMS-, Kamera- oder Speicherberechtigung angefordert. Fotos werden über die System-Galerie ausgewählt; die App erhält dabei nur temporären Zugriff auf das eine ausgewählte Bild und kopiert es in ihren eigenen privaten Speicher.
+Es wird **keine** `INTERNET`-, SMS-, Kamera- oder Speicherberechtigung angefordert. Der Kontaktzugriff wird erst bei der bewussten Kontaktauswahl abgefragt; die übernommenen Daten bleiben lokal. Fotos werden über die System-Galerie ausgewählt; die App erhält dabei nur temporären Zugriff auf das eine ausgewählte Bild und kopiert es in ihren eigenen privaten Speicher.

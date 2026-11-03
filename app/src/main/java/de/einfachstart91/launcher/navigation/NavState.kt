@@ -1,6 +1,7 @@
 package de.einfachstart91.launcher.navigation
 
 import androidx.compose.runtime.mutableStateListOf
+import de.einfachstart91.launcher.data.ContactPickerMode
 import de.einfachstart91.launcher.data.PinMode
 
 sealed interface Screen {
@@ -8,6 +9,7 @@ sealed interface Screen {
     data class Pin(val mode: PinMode) : Screen
     data object Admin : Screen
     data class ContactEditor(val contactId: String?) : Screen
+    data class ContactPicker(val mode: ContactPickerMode, val targetId: String? = null) : Screen
     data object Emergency : Screen
     data object Help : Screen
     data object Phone : Screen

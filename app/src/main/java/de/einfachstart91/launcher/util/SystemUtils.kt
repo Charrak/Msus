@@ -160,7 +160,7 @@ fun Context.safeStart(intent: Intent, fallback: Intent? = null, onError: (String
         when {
             intent.resolveActivity(packageManager) != null -> startActivity(intent)
             fallback != null && fallback.resolveActivity(packageManager) != null -> startActivity(fallback)
-            else -> onError("Diese Funktion ist auf diesem Gerät nicht verfügbar.")
+            else -> onError("Auf diesem Gerät ist dafür keine App verfügbar. Bitte die Kontaktliste in EinfachStart 91 nutzen.")
         }
     } catch (_: Exception) {
         try {

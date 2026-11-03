@@ -6,4 +6,4 @@ Erzeugt im erfolgreichen GitHub-Actions-Lauf `41723808804`:
 - `badging.txt`: vollständige Ausgabe von `aapt dump badging`.
 - `manifest.txt`: vollständige Ausgabe von `aapt dump xmltree ... AndroidManifest.xml`.
 
-Geprüft wurden `MAIN` + `HOME` im Manifest und das Fehlen von `android.permission.INTERNET`.
+Geprüft wurden `MAIN` + `HOME` im Manifest, das Fehlen von `android.permission.INTERNET` und die bewusst deklarierte `android.permission.READ_CONTACTS` für die Kontaktauswahl.

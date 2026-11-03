@@ -71,6 +71,8 @@ fun HomeScreen(
     onNavigateMessages: () -> Unit,
     onNavigateHelp: () -> Unit,
     onNavigateEmergency: () -> Unit,
+    onNavigateContacts: () -> Unit,
+    onAddContact: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -101,6 +103,7 @@ fun HomeScreen(
 
     val functions: List<HomeFunction?> = listOf(
         function(FunctionKeys.PHONE, "TELEFON", R.drawable.ic_phone, BluePhone, onNavigatePhone),
+        function(FunctionKeys.CONTACTS, "KONTAKTE", R.drawable.ic_person, BluePhone, onNavigateContacts),
         function(FunctionKeys.MESSAGES, "NACHRICHTEN", R.drawable.ic_message, GreenMessages, onNavigateMessages),
         function(FunctionKeys.WHATSAPP, "WHATSAPP", R.drawable.ic_whatsapp, GreenMessages) {
             context.openWhatsApp(showError)
@@ -144,11 +147,11 @@ fun HomeScreen(
                 ContactsFixed(
                     contacts = settings.contacts,
                     onCall = onCall,
-                    onAdd = onSettings,
+                    onAdd = onAddContact,
                     modifier = Modifier.fillMaxWidth(),
                 )
                 ThickDivider(Modifier.height(8.dp))
-                FunctionsFixed(functions, Modifier.height(264.dp))
+                FunctionsFixed(functions, Modifier.height(354.dp))
                 EmergencyBar(onNavigateEmergency, Modifier.height(88.dp))
             } else {
                 HomeHeader(
@@ -162,11 +165,11 @@ fun HomeScreen(
                 ContactsGrid(
                     contacts = settings.contacts,
                     onCall = onCall,
-                    onAdd = onSettings,
+                    onAdd = onAddContact,
                     modifier = Modifier.weight(1f),
                 )
                 ThickDivider(Modifier.height(8.dp))
-                FunctionsGrid(functions, Modifier.height(252.dp))
+                FunctionsGrid(functions, Modifier.height(336.dp))
                 EmergencyBar(onNavigateEmergency, Modifier.height(80.dp))
             }
         }
@@ -317,7 +320,7 @@ private fun FunctionsGrid(functions: List<HomeFunction?>, modifier: Modifier = M
             .padding(horizontal = 8.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        for (row in 0 until 3) {
+        for (row in 0 until 4) {
             Row(
                 modifier = Modifier
                     .weight(1f)
@@ -354,7 +357,7 @@ private fun FunctionsFixed(functions: List<HomeFunction?>, modifier: Modifier = 
             .padding(horizontal = 8.dp),
         verticalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        for (row in 0 until 3) {
+        for (row in 0 until 4) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

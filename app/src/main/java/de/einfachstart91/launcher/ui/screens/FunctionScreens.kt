@@ -35,7 +35,6 @@ import de.einfachstart91.launcher.ui.theme.OrangeImportant
 import de.einfachstart91.launcher.ui.theme.RedEmergency
 import de.einfachstart91.launcher.ui.theme.fs
 import de.einfachstart91.launcher.util.openCallLog
-import de.einfachstart91.launcher.util.openContacts
 import de.einfachstart91.launcher.util.openDefaultSmsApp
 import de.einfachstart91.launcher.util.openDialer
 import de.einfachstart91.launcher.util.openNewSms
@@ -72,6 +71,7 @@ private fun FunctionFrame(
 fun PhoneScreen(
     onBack: () -> Unit,
     onInfo: (String, String) -> Unit,
+    onNavigateContacts: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -96,9 +96,9 @@ fun PhoneScreen(
             iconRes = R.drawable.ic_call_log,
         )
         BigButton(
-            label = "TELEFONBUCH",
+            label = "KONTAKTE SUCHEN",
             color = BluePhone,
-            onClick = { context.openContacts(error) },
+            onClick = onNavigateContacts,
             iconRes = R.drawable.ic_person,
         )
         ThickDivider()

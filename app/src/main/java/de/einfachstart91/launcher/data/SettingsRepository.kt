@@ -86,6 +86,7 @@ class SettingsRepository(private val context: Context) {
     fun setEmergencyContact(id: String?) = update { it.copy(emergencyContactId = id) }
     fun setHelpContact(id: String?) = update { it.copy(helpContactId = id) }
     fun setShow112(value: Boolean) = update { it.copy(show112 = value) }
+    fun setAllowAddWithoutPin(value: Boolean) = update { it.copy(allowAddWithoutPin = value) }
     fun setWeatherText(value: String) = update { it.copy(weatherText = value.take(80)) }
     fun setFontScale(value: Float) = update { it.copy(fontScale = value.coerceIn(1.0f, 1.35f)) }
     fun setFunctionVisible(key: String, value: Boolean) = update { current ->

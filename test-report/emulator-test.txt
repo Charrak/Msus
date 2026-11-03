@@ -1,6 +1,6 @@
 EinfachStart 91 – Emulator-Testbericht
 Datum (UTC): 2026-11-03T22:15:42Z
-Branch: arena/f1d8df85-msus
+Branch: arena/0245f451-msus
 GitHub-Run: 41728410475
 Job-Status: success
 Emulator: Android 15 (API 35), google_apis, x86_64, AVD mit pixel_8-Geräteprofil, KVM

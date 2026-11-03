@@ -3,7 +3,7 @@ name: EinfachStart 91 – APK bauen
 on:
   workflow_dispatch:
   push:
-    branches: ['arena/f1d8df85-msus']
+    branches: ['arena/0245f451-msus']
     paths:
       - '.github/workflows/build-apk.yml'
       - '.build-trigger'
@@ -97,6 +97,10 @@ jobs:
             echo "::error::Unerwartete INTERNET-Berechtigung in der APK."
             exit 1
           fi
+          if ! grep -q "uses-permission: name='android.permission.READ_CONTACTS'" build-report/badging.txt; then
+            echo "::error::READ_CONTACTS-Berechtigung für die Kontaktauswahl fehlt."
+            exit 1
+          fi
           {
             echo "EinfachStart 91 – Build-Bericht"
             echo "Datum (UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -111,6 +115,7 @@ jobs:
             echo "=== Launcher-Prüfung ==="
             echo "MAIN + HOME im Manifest gefunden."
             echo "Keine INTERNET-Berechtigung gefunden."
+            echo "READ_CONTACTS ausschließlich für die bewusste Kontaktauswahl gefunden."
           } > build-report/apk-info.txt
           ls -lh apk/EinfachStart91.apk
 

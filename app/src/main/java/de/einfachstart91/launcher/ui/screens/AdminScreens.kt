@@ -25,6 +25,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,6 +41,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.einfachstart91.launcher.R
 import de.einfachstart91.launcher.data.AppSettings
+import de.einfachstart91.launcher.data.ContactPickerMode
 import de.einfachstart91.launcher.data.FunctionKeys
 import de.einfachstart91.launcher.data.PinMode
 import de.einfachstart91.launcher.data.SeniorContact
@@ -63,6 +65,7 @@ import de.einfachstart91.launcher.ui.theme.NeutralButton
 import de.einfachstart91.launcher.ui.theme.OrangeImportant
 import de.einfachstart91.launcher.ui.theme.RedEmergency
 import de.einfachstart91.launcher.ui.theme.fs
+import de.einfachstart91.launcher.util.DeviceContact
 import de.einfachstart91.launcher.util.isDefaultHomeRole
 import de.einfachstart91.launcher.util.openHomeSettings
 import de.einfachstart91.launcher.util.openSoundSettings
@@ -80,6 +83,7 @@ private val functionLabels = mapOf(
     FunctionKeys.PHOTOS to "FOTOS",
     FunctionKeys.CAMERA to "KAMERA",
     FunctionKeys.HELP to "HILFE",
+    FunctionKeys.CONTACTS to "KONTAKTE",
 )
 
 private fun iconForFunction(key: String): Int = when (key) {
@@ -88,6 +92,7 @@ private fun iconForFunction(key: String): Int = when (key) {
     FunctionKeys.WHATSAPP -> R.drawable.ic_whatsapp
     FunctionKeys.PHOTOS -> R.drawable.ic_photos
     FunctionKeys.CAMERA -> R.drawable.ic_camera
+    FunctionKeys.CONTACTS -> R.drawable.ic_person
     else -> R.drawable.ic_help
 }
 
@@ -99,6 +104,7 @@ fun AdminScreen(
     onRequestCallPermission: () -> Unit,
     onBack: () -> Unit,
     onOpenContactEditor: (String?) -> Unit,
+    onOpenContactPicker: (ContactPickerMode) -> Unit,
     onChangePin: () -> Unit,
     onInfo: (String, String) -> Unit,
     modifier: Modifier = Modifier,
@@ -166,11 +172,24 @@ fun AdminScreen(
                     onToggleFavorite = { repository.toggleFavorite(contact.id) },
                 )
             }
+            BigSwitchRow(
+                label = "Kontakte ohne PIN hinzufügen erlauben",
+                checked = settings.allowAddWithoutPin,
+                onCheckedChange = { repository.setAllowAddWithoutPin(it) },
+                iconRes = R.drawable.ic_person,
+            )
             BigButton(
                 label = "KONTAKT HINZUFÜGEN",
                 color = BluePhone,
                 onClick = { onOpenContactEditor(null) },
                 iconRes = R.drawable.ic_add,
+                enabled = settings.contacts.size < SettingsRepository.MAX_CONTACTS,
+            )
+            BigButton(
+                label = "AUS KONTAKTLISTE HINZUFÜGEN",
+                color = BluePhone,
+                onClick = { onOpenContactPicker(ContactPickerMode.ADD) },
+                iconRes = R.drawable.ic_person,
                 enabled = settings.contacts.size < SettingsRepository.MAX_CONTACTS,
             )
             if (settings.contacts.size >= SettingsRepository.MAX_CONTACTS) {
@@ -421,6 +440,9 @@ fun ContactEditorScreen(
     contactId: String?,
     settings: AppSettings,
     repository: SettingsRepository,
+    pickedContact: DeviceContact?,
+    onPickedContactConsumed: () -> Unit,
+    onPickFromContacts: () -> Unit,
     onBack: () -> Unit,
     onInfo: (String, String) -> Unit,
     modifier: Modifier = Modifier,
@@ -437,6 +459,14 @@ fun ContactEditorScreen(
     var showDelete by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val canSave = existing != null || settings.contacts.size < SettingsRepository.MAX_CONTACTS
+
+    LaunchedEffect(pickedContact) {
+        val picked = pickedContact ?: return@LaunchedEffect
+        name = picked.name
+        phone = picked.number
+        photoPath = picked.photoUri?.let { repository.copyContactPhoto(Uri.parse(it), id) }
+        onPickedContactConsumed()
+    }
 
     val photoPicker = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         if (uri == null) return@rememberLauncherForActivityResult
@@ -530,6 +560,12 @@ fun ContactEditorScreen(
                 color = BluePhone,
                 onClick = { photoPicker.launch("image/*") },
                 iconRes = R.drawable.ic_photos,
+            )
+            BigButton(
+                label = "AUS KONTAKTLISTE ÜBERNEHMEN",
+                color = BluePhone,
+                onClick = onPickFromContacts,
+                iconRes = R.drawable.ic_person,
             )
             BigTextField(
                 value = name,

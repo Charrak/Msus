@@ -15,7 +15,7 @@ Die ausgelieferte APK wurde am 3. November 2026 in GitHub Actions auf `ubuntu-la
 Der Build-Workflow hat `assembleDebug` ausgeführt und anschließend geprüft:
 
 - `android.intent.action.MAIN` und `android.intent.category.HOME` sind im Manifest vorhanden,
-- **keine** `android.permission.INTERNET` ist in der APK enthalten,
+- **keine** `android.permission.INTERNET` ist in der APK enthalten; `READ_CONTACTS` ist ausschließlich für die bewusste Kontaktauswahl deklariert,
 - die APK ist 24.587.577 Byte groß; SHA-256 siehe `build-report/apk-info.txt`.
 
 Der Emulator-Workflow hat `assembleDebug` und `assembleAndroidTest` ausgeführt. Danach:
@@ -24,8 +24,9 @@ Der Emulator-Workflow hat `assembleDebug` und `assembleAndroidTest` ausgeführt.
 - `libpulse0` für den Emulator installiert, `ANDROID_AVD_HOME` auf `$HOME/.android/avd` fixiert,
 - Emulator direkt gestartet und `sys.boot_completed=1` abgewartet,
 - App-APK und Test-APK mit `adb install -r` installiert – jeweils `Success`,
-- `LauncherInstrumentedTest` mit `adb shell am instrument` ausgeführt: **`OK (1 test)`**,
-- geprüft, dass Titel, „MEINE LIEBSTEN“, TELEFON, NACHRICHTEN und die Notfalltaste sichtbar sind.
+- `LauncherInstrumentedTest` mit `adb shell am instrument` ausgeführt: **`OK (2 tests)`**,
+- geprüft, dass Titel, „MEINE LIEBSTEN“, TELEFON, NACHRICHTEN, KONTAKTE und die Notfalltaste sichtbar sind,
+- geprüft, dass die **KONTAKTE**-Taste die durchsuchbare Kontaktliste mit „ALLE KONTAKTE DURCHSUCHEN“ öffnet.
 
 ## Lokal mit Android Studio bauen
 

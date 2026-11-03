@@ -22,12 +22,12 @@ Die APK wurde am 3. November 2026 in GitHub Actions mit Android Gradle Plugin 8.
 | --- | --- |
 | Startbildschirm | `MAIN` + `HOME` + `DEFAULT` + `LAUNCHER` im Manifest; `singleTask`; nach dem Entsperren automatisch verfügbar |
 | Oben | Große Uhr, deutsches Datum mit Wochentag, Akku in Prozent mit Symbol, optionaler lokaler Wetterhinweis |
-| Kontakte | Bis 8 Favoriten mit rundem Foto, vollständigem Namen und großem Telefonsymbol; direkter Anruf |
-| Große Tasten | TELEFON, NACHRICHTEN, WHATSAPP, FOTOS, KAMERA, HILFE |
+| Kontakte | Bis 8 Favoriten aus der Android-Kontaktliste oder manuell; rundes Foto, vollständiger Name, großes Telefonsymbol, direkter Anruf |
+| Große Tasten | TELEFON, KONTAKTE, NACHRICHTEN, WHATSAPP, FOTOS, KAMERA, HILFE |
 | Notfall | Rote Taste → deutliche Bestätigungsseite → Notfallkontakt anrufen oder optional 112; **kein automatischer Anruf** |
 | Verwaltung | PIN-geschützt: Kontakte, Fotos, Reihenfolge, Favoriten, Notfall-/Hilfekontakt, Schriftgröße, Funktionen, Gerät |
 | Bedienung | Mindestens 80 dp Touchflächen, sehr große Schrift, hoher Kontrast, heller Hintergrund, großer Zurück-Button auf jedem Bildschirm |
-| Datenschutz | **Keine `INTERNET`-Berechtigung**, keine Analyse, kein Backup, Kontakte und Fotos nur im app-eigenen Speicher |
+| Datenschutz | **Keine `INTERNET`-Berechtigung**, keine Analyse, kein Backup. `READ_CONTACTS` nur nach bewusster Auswahl; übernommene Kontakte und Fotos bleiben lokal im app-eigenen Speicher |
 
 ---
 
@@ -51,7 +51,7 @@ Die APK wurde am 3. November 2026 in GitHub Actions mit Android Gradle Plugin 8.
 - **Ziel:** API 35 (Android 15), installiert und getestet auf API 35 im Pixel-8-Emulatorprofil
 - **Speicherung:** `SharedPreferences` mit JSON + `StateFlow`; Kontaktfotos als JPEG in `filesDir/contact_photos`
 - **PIN:** zufälliges Salt + SHA-256-Prüfsumme, nie im Klartext
-- **Integration:** Android-Intents für Telefon, Anrufliste, SMS, WhatsApp, Galerie, Kamera und Systemeinstellungen
+- **Integration:** Android-Intents für Telefon, Anrufliste, SMS, WhatsApp, Galerie, Kamera und Systemeinstellungen; eigene durchsuchbare Kontaktliste aus `ContactsContract`
 - **Kein Root**, kein Device-Admin, kein Accessibility-Service, keine Systemumgehung
 
 ---
@@ -84,6 +84,7 @@ Die mitgelieferte APK ist bewusst mit dem lokalen Debug-Schlüssel signiert, dam
 
 ## Bewusst einfache Entscheidungen
 
+- **Kontaktliste:** Die App liest die Geräte-Kontakte nur, wenn Sie bewusst „KONTAKTE“, „KONTAKT HINZUFÜGEN“ oder „AUS KONTAKTLISTE ÜBERNEHMEN“ antippen. Es werden keine Kontakte automatisch gesammelt oder übertragen.
 - **Wetter:** kein Online-Dienst. Angehörige können optional einen kurzen Text lokal hinterlegen, damit keine Daten das Gerät verlassen.
 - **SMS / Anrufliste:** Die App öffnet die dafür zuständige System-App per Intent. Sie liest keine Nachrichten oder Anrufprotokolle in eine eigene Datenbank.
 - **Zurück:** Der große Zurück-Button führt auf Unterseiten eine Ebene zurück. Auf dem Startbildschirm zeigt er eine große Bestätigung an, statt die App zu verlassen; die System-Zurück-Taste wird dort ebenfalls abgefangen.

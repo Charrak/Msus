@@ -3,7 +3,7 @@ name: EinfachStart 91 – Emulator-Test
 on:
   workflow_dispatch:
   push:
-    branches: ['arena/f1d8df85-msus']
+    branches: ['arena/0245f451-msus']
     paths:
       - '.github/workflows/emulator-test.yml'
       - '.emulator-trigger'

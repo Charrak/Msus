@@ -4,6 +4,7 @@ import android.Manifest
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
 import org.junit.Rule
@@ -17,7 +18,12 @@ class LauncherInstrumentedTest {
 
     @get:Rule
     val ruleChain: RuleChain = RuleChain
-        .outerRule(GrantPermissionRule.grant(Manifest.permission.CALL_PHONE))
+        .outerRule(
+            GrantPermissionRule.grant(
+                Manifest.permission.CALL_PHONE,
+                Manifest.permission.READ_CONTACTS,
+            ),
+        )
         .around(composeRule)
 
     @Test
@@ -28,5 +34,15 @@ class LauncherInstrumentedTest {
         composeRule.onNodeWithText("TELEFON").assertIsDisplayed()
         composeRule.onNodeWithText("NACHRICHTEN").assertIsDisplayed()
         composeRule.onNodeWithText("NOTFALL – HILFE RUFEN").assertIsDisplayed()
+        composeRule.onNodeWithText("KONTAKTE").assertIsDisplayed()
+    }
+
+    @Test
+    fun kontaktSucheZeigtAlleKontakteAn() {
+        composeRule.waitForIdle()
+        composeRule.onNodeWithText("KONTAKTE").performClick()
+        composeRule.waitForIdle()
+        composeRule.onNodeWithText("ALLE KONTAKTE DURCHSUCHEN").assertIsDisplayed()
+        composeRule.onNodeWithText("Kontakte gefunden", substring = true).assertIsDisplayed()
     }
 }

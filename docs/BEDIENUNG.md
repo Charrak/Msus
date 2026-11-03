@@ -13,29 +13,35 @@ MEINE LIEBSTEN
 [ FOTO ] [ FOTO ]
 SOHN       TOCHTER
 
-[ TELEFON ]      [ NACHRICHTEN ]
-[ WHATSAPP ]     [ FOTOS ]
-[ KAMERA ]       [ HILFE ]
+[ TELEFON ]      [ KONTAKTE ]
+[ NACHRICHTEN ]  [ WHATSAPP ]
+[ FOTOS ]        [ KAMERA ]
+[ HILFE ]
 
 [ NOTFALL – HILFE RUFEN ]
 ```
 
 - **Uhr, Datum, Wochentag und Akku** stehen oben.
 - **Kontakte:** Ein Tippen auf die ganze Karte ruft die Person direkt an. Das große Telefonsymbol macht die Funktion zusätzlich deutlich.
-- Leere Plätze zeigen ein „+“ und führen nach PIN-Eingabe in die Kontaktverwaltung.
+- Leere Plätze zeigen ein „+“ und öffnen standardmäßig **ohne PIN** die durchsuchbare Kontaktliste. In der Verwaltung lässt sich dieser Weg wieder PIN-pflichtig schalten.
 - Auf dem Pixel 8 passt der Bildschirm ohne Scrollen. Auf sehr kleinen Displays kann normal gescrollt werden; es gibt keine versteckten Wischgesten.
 
 ## Die großen Funktionstasten
 
 | Taste | Was passiert |
 | --- | --- |
-| **TELEFON** | Große Auswahl: Anrufen, Anrufliste, Telefonbuch |
+| **TELEFON** | Große Auswahl: Anrufen, Anrufliste, Kontakte suchen |
+| **KONTAKTE** | Alle Kontakte des Geräts durchsuchen und direkt anrufen |
 | **NACHRICHTEN** | SMS-App lesen oder neue SMS schreiben |
 | **WHATSAPP** | Öffnet WhatsApp, falls installiert |
 | **FOTOS** | Öffnet die Galerie / Bilderansicht |
 | **KAMERA** | Startet die Kamera-App |
 | **HILFE** | Zeigt den festgelegten Angehörigen und ruft ihn nach Bestätigung an |
 | **NOTFALL – HILFE RUFEN** | Öffnet zuerst eine deutliche rote Bestätigungsseite |
+
+## Kontakte suchen
+
+Die **KONTAKTE**-Taste öffnet eine große Suchliste mit allen Kontakten des Geräts. Name oder Telefonnummer eingeben, dann den passenden Eintrag antippen, um sofort anzurufen. Es ist keine separate Kontakte-App nötig.
 
 ## Notfall
 

@@ -11,10 +11,13 @@ object FunctionKeys {
     const val PHOTOS = "photos"
     const val CAMERA = "camera"
     const val HELP = "help"
-    val ALL = listOf(PHONE, MESSAGES, WHATSAPP, PHOTOS, CAMERA, HELP)
+    const val CONTACTS = "contacts"
+    val ALL = listOf(PHONE, CONTACTS, MESSAGES, WHATSAPP, PHOTOS, CAMERA, HELP)
 }
 
 enum class PinMode { SETUP, VERIFY, CHANGE }
+
+enum class ContactPickerMode { ADD, CALL, FILL }
 
 private fun JSONObject.optNullableString(key: String): String? {
     val value = opt(key) ?: return null
@@ -71,6 +74,7 @@ data class AppSettings(
     val visibleFunctions: Map<String, Boolean> = FunctionKeys.ALL.associateWith { true },
     val pinSalt: String? = null,
     val pinHash: String? = null,
+    val allowAddWithoutPin: Boolean = true,
 ) {
     fun toJson(): JSONObject = JSONObject().apply {
         put("contacts", JSONArray().also { array -> contacts.forEach { array.put(it.toJson()) } })
@@ -84,6 +88,7 @@ data class AppSettings(
         })
         put("pinSalt", pinSalt ?: JSONObject.NULL)
         put("pinHash", pinHash ?: JSONObject.NULL)
+        put("allowAddWithoutPin", allowAddWithoutPin)
     }
 
     companion object {
@@ -105,6 +110,7 @@ data class AppSettings(
                 visibleFunctions = visible,
                 pinSalt = o.optNullableString("pinSalt"),
                 pinHash = o.optNullableString("pinHash"),
+                allowAddWithoutPin = o.optBoolean("allowAddWithoutPin", true),
             )
         }
     }
