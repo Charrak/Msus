@@ -1,9 +1,9 @@
 EinfachStart 91 – Emulator-Testbericht
-Datum (UTC): 2026-11-03T23:10:08Z
+Datum (UTC): 2026-11-03T23:15:19Z
 Branch: arena/0245f451-msus
-Commit: 6512b6f1dd1449adb7e4bc4caca93cd3028db984
-GitHub-Run: 41736241993 (Versuch 1)
-Job-Status: failure
+Commit: 22596ada735de17eb049d68d00fb42eb4da3d6a5
+GitHub-Run: 41737103696 (Versuch 1)
+Job-Status: success
 Emulator: Android 15 (API 35), google_apis, x86_64, Pixel-8-Profil
 
 === Instrumentation-Ausgabe ===
@@ -33,35 +33,14 @@ INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTes
 INSTRUMENTATION_STATUS: current=2
 INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
 INSTRUMENTATION_STATUS: numtests=2
-INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
-	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
-	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
-	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
-	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
-
-INSTRUMENTATION_STATUS: stream=
-Error in kontaktSucheZeigtAlleKontakteAn(de.einfachstart91.launcher.LauncherInstrumentedTest):
-java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
-	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
-	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
-	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
-	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
-
+INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: test=kontaktSucheZeigtAlleKontakteAn
-INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_RESULT: stream=
 
-Time: 16.983
-There was 1 failure:
-1) kontaktSucheZeigtAlleKontakteAn(de.einfachstart91.launcher.LauncherInstrumentedTest)
-java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
-	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
-	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
-	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
-	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
+Time: 15.714
 
-FAILURES!!!
-Tests run: 2,  Failures: 1
+OK (2 tests)
 
 
 INSTRUMENTATION_CODE: -1
@@ -79,38 +58,38 @@ Success
           Action: "android.intent.action.MAIN"
 
 === Gradle-Build (Abschluss) ===
-> Task :app:mergeExtDexDebugAndroidTest
+> Task :app:mergeDebugAndroidTestJavaResource
 > Task :app:packageDebugAndroidTest
 > Task :app:createDebugAndroidTestApkListingFileRedirect
 > Task :app:assembleDebugAndroidTest
 > Task :app:assembleAndroidTest
 
-BUILD SUCCESSFUL in 2m 45s
+BUILD SUCCESSFUL in 1m 49s
 62 actionable tasks: 56 executed, 6 from cache
 
 === Emulator-Bootprotokoll (Auszug) ===
-DEBUG   | ColorBuffer 164, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 166, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 167, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 183, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0x629bc2b51340
+DEBUG   | ColorBuffer 184, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 186, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 187, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 188, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 190, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 191, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 192, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 194, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 195, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 24
-DEBUG   | Exited a RenderThread @0x56c3bca7ac40
+DEBUG   | Exited a RenderThread @0x629bc2b51340
 VERBOSE | Destroyed RenderThread. Active RenderThreads: 23
-DEBUG   | Exited a RenderThread @0x56c3c5f55180
-VERBOSE | Destroyed RenderThread. Active RenderThreads: 22
-DEBUG   | Started new RenderThread (total 22) @0x56c3bfa248c0
-DEBUG   | ColorBuffer 170, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 171, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 173, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 174, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 175, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 177, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 178, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 179, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 180, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 182, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 183, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 184, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 23
-DEBUG   | Started new RenderThread (total 23) @0x56c3c5f54a80
-DEBUG   | ColorBuffer 187, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
-DEBUG   | Waiting for exit signal RenderThread @0x56c3bfa248c0
+DEBUG   | Started new RenderThread (total 23) @0x629bb9a03340
+DEBUG   | ColorBuffer 198, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 199, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 200, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 202, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 203, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 204, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 206, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 207, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 208, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0x629bb9a03340

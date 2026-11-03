@@ -229,8 +229,8 @@ INFO         |      Ok: System requirements to run avd: `einfachstart91-test` ar
 DEBUG   | Starting hostapd main loop.
 DEBUG   | found magic skin width=1080 height=2400 bpp=32
 
-DEBUG   | FeatureControl::setIfNotOverriden: QuickbootFileBacked is changed to disabled
 WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1
+DEBUG   | FeatureControl::setIfNotOverriden: QuickbootFileBacked is changed to disabled
 DEBUG   | Creating ext4 userdata partition: /home/runner/.android/avd/einfachstart91-test.avd/data
 Creating filesystem with parameters:
     Size: 6442450944
@@ -244,7 +244,7 @@ Creating filesystem with parameters:
     Block groups: 48
     Reserved block group size: 383
 Created filesystem with 11/393216 inodes and 52331/1572864 blocks
-DEBUG   | convert img from ext4 /home/runner/.android/avd/einfachstart91-test.avd/userdata-qemu.img to qcow2 image /home/runner/.android/avd/einfachstart91-test.avd/userdata-qemu.img.tmp.qcow2  succeeded, using 47 mini seconds
+DEBUG   | convert img from ext4 /home/runner/.android/avd/einfachstart91-test.avd/userdata-qemu.img to qcow2 image /home/runner/.android/avd/einfachstart91-test.avd/userdata-qemu.img.tmp.qcow2  succeeded, using 33 mini seconds
 DEBUG   | Creating empty ext4 cache partition: /home/runner/.android/avd/einfachstart91-test.avd/cache.img
 Creating filesystem with parameters:
     Size: 69206016
@@ -263,7 +263,7 @@ DEBUG   | CPU Acceleration status: KVM (version 12) is installed and usable.
 DEBUG   | handleCpuAcceleration: feature check for hvf
 DEBUG   | FeatureControl::setIfNotOverriden: VsockSnapshotLoadFixed_b231345789 is changed to enabled
 DEBUG   | Bluetooth requested by guest
-DEBUG   | started modem simulator host server at port: 37583
+DEBUG   | started modem simulator host server at port: 40991
 DEBUG   | Path:/usr/local/lib/android/sdk/platform-tools/adb protocol version: 41
 DEBUG   | Path:/usr/local/lib/android/sdk/platform-tools/adb protocol version: 41
 DEBUG   | Path:/usr/local/lib/android/sdk/platform-tools/adb protocol version: 41
@@ -276,7 +276,7 @@ DEBUG   | Path:/usr/local/lib/android/sdk/platform-tools/adb protocol version: 4
 DEBUG   | Path:/usr/local/lib/android/sdk/platform-tools/adb protocol version: 41
 DEBUG   | emulator_window_framebuffer_create: 1080x2400
 
-INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.13.db, detection is enabled for process: 3556
+INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.13.db, detection is enabled for process: 3267
 DEBUG   | FeatureControl::setIfNotOverridenOrGuestDisabled: GLESDynamicVersion is changed to enabled
 INFO         | Initializing gfxstream backend
 INFO         | startOpenglesRendererImpl: gpu info
@@ -856,7 +856,7 @@ DEBUG   | Renderer initialized successfully
 VERBOSE | Created RenderThread. Active RenderThreads: 1
 INFO         | Setting vsync to 60 hz
 DEBUG   | CMD_SET_VSYNC_HZ
-INFO         | Sending adb public key [QAAAALsF7zGNCMSsVmUh7n2RNiiu0pFWvsDFaEIlWQFrirLn27JtZ3G2wnxqDN4Scm3xCNdI4O6+QhNDFYTRrJtiT8gxG2WeE4o7sma3RHgy6NG3KVC6CubsM9rGot1Pj/yaEhyXa1dU8g3BLQ7YZZPbEHpiyfbaU5VnzzO1nBeTvhOXLJkYrDaB4l4TOe3vggsPbP8FvvRdtUpxL+Qul/uOmhnO7+ui54ALm7YB0S+z3LKQp1otjz/ZKZZ6STentNk9NE2uJmw28j7S01PY/rPn5EDMWAVgBcaVTW6Pfgk/a6W1QBaGIS3dMDhWCiiPegNmapjvetfHOltgT5TsITAA/CAlnHCiDJzwu13P5c6Fompl6MdfJ/Nj85deI69Cq1emnATS0CdApswZS0EFLEWv20A4Z9tqYc9Ha9yqME0TGQZUKmz7e9fFYdlUMJLepCGA9KWdrXN5ZXzqU86Ft0N+G3Kdnq7G1EOBcufH9PqwlJc9xwdMLhYvsLfKBvbSBZOEGRC4rrNLeX5hdDErNqhK40FLUEOPzr6k9kWJRUN6LSC8hnoBUtDtsYKlX8e6bHWGYpCuumYeLuieGB/4XglqoLsFG5UuyB1ZSjcNPelJlSKFVM9Vd6Hn6DlSnqYMECTVn/LWWN/MMsosx6lV9TvNIqt3NQlDZBnuVz22Z9k20/MAvvpjQAEAAQA= runner@unknown]
+INFO         | Sending adb public key [QAAAAJWTFrlD4OG4x0vkqdEzV0Fm7g2CRFvkiMnSCwko3ltO3YQNA07Tngr3yNO1r5eiFe4TK2Uk0fdMiUVBaI9vlDrKDsyjuGf/ioKNoJWPpDJPkdFfp/5SKsW5831ZOgZYvhAMT/oJ/IT07x5Q8I0WgiJkLLwaif+LY+twJjolx/oPE97LtkEGgpQ6xOlCN+l+Xh4QFVe7pC8ItQ5l3Kpu4P2kYjC9pwCoIm6opRtMBTB8PW/Fmk9DvjZxT1zNQVC3F4SZBlYfdgqDUPGh81pPpPBiTv+7+E4ocdZhfbV3m3ZgpjtNDfKIM8u52j9xfwHK68TQJ7w1xQj0mOX1t9VU5GzkeCHFHOi8YKSRCs2xr29SLdmyq0RKK0XwUAUeLSoIRfEtLdbDusKltxIQYwsYUHj4qYJZVIO20uxLMpa9IlR1QXp4EWrNBXecoWKDGI7yuAtsoG1iuLkjCf0ZTFr4nTL8gaVXgw+hLU6aX03QcKdpLk+6yvJIHaz2UUsJiK9ohQtjz6h/Xu9q9Kcsl+XEfxJ1UqY6naQ6MRCRb0C0HO51tegFffKEQAFAmtK7aHDOnGKqaqnn3kp6/WkTJNG02DfpvtH3tEqO3lR1oYqZJOt+qmzLQP4Bez+KRbJeQVnndlot/e13d+mZ0Wzj0cChAgYnmqSC6n1QEKy5ZWdLx+JUFWHdpgEAAQA= runner@unknown]
 INFO         | Userspace boot properties:
 INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
 INFO         |   androidboot.dalvik.vm.heapsize=576m
@@ -868,7 +868,7 @@ INFO         |   androidboot.hardware.vulkan=ranchu
 INFO         |   androidboot.logcat=*:V
 INFO         |   androidboot.opengles.version=196608
 INFO         |   androidboot.qemu=1
-INFO         |   androidboot.qemu.adb.pubkey=QAAAALsF7zGNCMSsVmUh7n2RNiiu0pFWvsDFaEIlWQFrirLn27JtZ3G2wnxqDN4Scm3xCNdI4O6+QhNDFYTRrJtiT8gxG2WeE4o7sma3RHgy6NG3KVC6CubsM9rGot1Pj/yaEhyXa1dU8g3BLQ7YZZPbEHpiyfbaU5VnzzO1nBeTvhOXLJkYrDaB4l4TOe3vggsPbP8FvvRdtUpxL+Qul/uOmhnO7+ui54ALm7YB0S+z3LKQp1otjz/ZKZZ6STentNk9NE2uJmw28j7S01PY/rPn5EDMWAVgBcaVTW6Pfgk/a6W1QBaGIS3dMDhWCiiPegNmapjvetfHOltgT5TsITAA/CAlnHCiDJzwu13P5c6Fompl6MdfJ/Nj85deI69Cq1emnATS0CdApswZS0EFLEWv20A4Z9tqYc9Ha9yqME0TGQZUKmz7e9fFYdlUMJLepCGA9KWdrXN5ZXzqU86Ft0N+G3Kdnq7G1EOBcufH9PqwlJc9xwdMLhYvsLfKBvbSBZOEGRC4rrNLeX5hdDErNqhK40FLUEOPzr6k9kWJRUN6LSC8hnoBUtDtsYKlX8e6bHWGYpCuumYeLuieGB/4XglqoLsFG5UuyB1ZSjcNPelJlSKFVM9Vd6Hn6DlSnqYMECTVn/LWWN/MMsosx6lV9TvNIqt3NQlDZBnuVz22Z9k20/MAvvpjQAEAAQA= runner@unknown
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAJWTFrlD4OG4x0vkqdEzV0Fm7g2CRFvkiMnSCwko3ltO3YQNA07Tngr3yNO1r5eiFe4TK2Uk0fdMiUVBaI9vlDrKDsyjuGf/ioKNoJWPpDJPkdFfp/5SKsW5831ZOgZYvhAMT/oJ/IT07x5Q8I0WgiJkLLwaif+LY+twJjolx/oPE97LtkEGgpQ6xOlCN+l+Xh4QFVe7pC8ItQ5l3Kpu4P2kYjC9pwCoIm6opRtMBTB8PW/Fmk9DvjZxT1zNQVC3F4SZBlYfdgqDUPGh81pPpPBiTv+7+E4ocdZhfbV3m3ZgpjtNDfKIM8u52j9xfwHK68TQJ7w1xQj0mOX1t9VU5GzkeCHFHOi8YKSRCs2xr29SLdmyq0RKK0XwUAUeLSoIRfEtLdbDusKltxIQYwsYUHj4qYJZVIO20uxLMpa9IlR1QXp4EWrNBXecoWKDGI7yuAtsoG1iuLkjCf0ZTFr4nTL8gaVXgw+hLU6aX03QcKdpLk+6yvJIHaz2UUsJiK9ohQtjz6h/Xu9q9Kcsl+XEfxJ1UqY6naQ6MRCRb0C0HO51tegFffKEQAFAmtK7aHDOnGKqaqnn3kp6/WkTJNG02DfpvtH3tEqO3lR1oYqZJOt+qmzLQP4Bez+KRbJeQVnndlot/e13d+mZ0Wzj0cChAgYnmqSC6n1QEKy5ZWdLx+JUFWHdpgEAAQA= runner@unknown
 INFO         |   androidboot.qemu.avd_name=einfachstart91-test
 INFO         |   androidboot.qemu.camera_hq_edge_processing=0
 INFO         |   androidboot.qemu.camera_protocol_ver=1
@@ -889,6 +889,7 @@ INFO         |   androidboot.vbmeta.size=6720
 INFO         |   androidboot.veritymode=enforcing
 INFO         | Android bootconfig:
 INFO         |   androidboot.boot_devices="pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0"
+DEBUG   | Exited a loader RenderThread @0x629ba4cf6c40
 INFO         |   androidboot.dalvik.vm.heapsize="576m"
 INFO         |   androidboot.debug.hwui.renderer="skiagl"
 INFO         |   androidboot.debug.sf.nobootanimation="1"
@@ -898,7 +899,7 @@ INFO         |   androidboot.hardware.vulkan="ranchu"
 INFO         |   androidboot.logcat="*:V"
 INFO         |   androidboot.opengles.version="196608"
 INFO         |   androidboot.qemu="1"
-INFO         |   androidboot.qemu.adb.pubkey="QAAAALsF7zGNCMSsVmUh7n2RNiiu0pFWvsDFaEIlWQFrirLn27JtZ3G2wnxqDN4Scm3xCNdI4O6+QhNDFYTRrJtiT8gxG2WeE4o7sma3RHgy6NG3KVC6CubsM9rGot1Pj/yaEhyXa1dU8g3BLQ7YZZPbEHpiyfbaU5VnzzO1nBeTvhOXLJkYrDaB4l4TOe3vggsPbP8FvvRdtUpxL+Qul/uOmhnO7+ui54ALm7YB0S+z3LKQp1otjz/ZKZZ6STentNk9NE2uJmw28j7S01PY/rPn5EDMWAVgBcaVTW6Pfgk/a6W1QBaGIS3dMDhWCiiPegNmapjvetfHOltgT5TsITAA/CAlnHCiDJzwu13P5c6Fompl6MdfJ/Nj85deI69Cq1emnATS0CdApswZS0EFLEWv20A4Z9tqYc9Ha9yqME0TGQZUKmz7e9fFYdlUMJLepCGA9KWdrXN5ZXzqU86Ft0N+G3Kdnq7G1EOBcufH9PqwlJc9xwdMLhYvsLfKBvbSBZOEGRC4rrNLeX5hdDErNqhK40FLUEOPzr6k9kWJRUN6LSC8hnoBUtDtsYKlX8e6bHWGYpCuumYeLuieGB/4XglqoLsFG5UuyB1ZSjcNPelJlSKFVM9Vd6Hn6DlSnqYMECTVn/LWWN/MMsosx6lV9TvNIqt3NQlDZBnuVz22Z9k20/MAvvpjQAEAAQA= runner@unknown"
+INFO         |   androidboot.qemu.adb.pubkey="QAAAAJWTFrlD4OG4x0vkqdEzV0Fm7g2CRFvkiMnSCwko3ltO3YQNA07Tngr3yNO1r5eiFe4TK2Uk0fdMiUVBaI9vlDrKDsyjuGf/ioKNoJWPpDJPkdFfp/5SKsW5831ZOgZYvhAMT/oJ/IT07x5Q8I0WgiJkLLwaif+LY+twJjolx/oPE97LtkEGgpQ6xOlCN+l+Xh4QFVe7pC8ItQ5l3Kpu4P2kYjC9pwCoIm6opRtMBTB8PW/Fmk9DvjZxT1zNQVC3F4SZBlYfdgqDUPGh81pPpPBiTv+7+E4ocdZhfbV3m3ZgpjtNDfKIM8u52j9xfwHK68TQJ7w1xQj0mOX1t9VU5GzkeCHFHOi8YKSRCs2xr29SLdmyq0RKK0XwUAUeLSoIRfEtLdbDusKltxIQYwsYUHj4qYJZVIO20uxLMpa9IlR1QXp4EWrNBXecoWKDGI7yuAtsoG1iuLkjCf0ZTFr4nTL8gaVXgw+hLU6aX03QcKdpLk+6yvJIHaz2UUsJiK9ohQtjz6h/Xu9q9Kcsl+XEfxJ1UqY6naQ6MRCRb0C0HO51tegFffKEQAFAmtK7aHDOnGKqaqnn3kp6/WkTJNG02DfpvtH3tEqO3lR1oYqZJOt+qmzLQP4Bez+KRbJeQVnndlot/e13d+mZ0Wzj0cChAgYnmqSC6n1QEKy5ZWdLx+JUFWHdpgEAAQA= runner@unknown"
 INFO         |   androidboot.qemu.avd_name="einfachstart91-test"
 INFO         |   androidboot.qemu.camera_hq_edge_processing="0"
 INFO         |   androidboot.qemu.camera_protocol_ver="1"
@@ -917,7 +918,6 @@ INFO         |   androidboot.vbmeta.digest="b3271ba499104f4631ae3723913d5c12574e
 INFO         |   androidboot.vbmeta.hash_alg="sha256"
 INFO         |   androidboot.vbmeta.size="6720"
 INFO         |   androidboot.veritymode="enforcing"
-DEBUG   | Exited a loader RenderThread @0x56c39900ec40
 DEBUG   | Found 1 DNS servers:
 DEBUG   | 	127.0.0.53
 INFO         | Content of hardware configuration file:
@@ -1119,7 +1119,7 @@ INFO         | 	 argv[61] = "virtserialport,chardev=bluetooth,name=bluetooth"
 INFO         | 	 argv[62] = "-device"
 INFO         | 	 argv[63] = "virtio-serial,ioeventfd=off"
 INFO         | 	 argv[64] = "-chardev"
-INFO         | 	 argv[65] = "socket,port=37701,host=::1,nowait,nodelay,reconnect=10,ipv6,id=modem"
+INFO         | 	 argv[65] = "socket,port=35415,host=::1,nowait,nodelay,reconnect=10,ipv6,id=modem"
 INFO         | 	 argv[66] = "-device"
 INFO         | 	 argv[67] = "virtserialport,chardev=modem,name=modem"
 INFO         | 	 argv[68] = "-device"
@@ -1163,7 +1163,7 @@ INFO         | 	 argv[105] = "-append"
 INFO         | 	 argv[106] = "8250.nr_uarts=1 clocksource=pit no_timer_check console=0 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on bootconfig"
 INFO         | 	 argv[107] = "-android-hw"
 INFO         | 	 argv[108] = "/home/runner/.android/avd/einfachstart91-test.avd/hardware-qemu.ini"
-INFO         | Concatenated QEMU options: /usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/qemu-system-x86_64-headless -dns-server 127.0.0.53 -no-audio -serial null -device goldfish_pstore,addr=0xff018000,size=0x10000,file=/home/runner/.android/avd/einfachstart91-test.avd/data/misc/pstore/pstore.bin -cpu android64 -enable-kvm -smp cores=2 -m 2560 -lcd-density 420 -object iothread,id=disk-iothread -nodefaults -kernel /usr/local/lib/android/sdk/system-images/android-35/google_apis/x86_64//kernel-ranchu -initrd /home/runner/.android/avd/einfachstart91-test.avd/initrd -drive if=none,index=0,id=system,if=none,file=/usr/local/lib/android/sdk/system-images/android-35/google_apis/x86_64//system.img,read-only -device virtio-blk-pci,drive=system,iothread=disk-iothread,modern-pio-notify -drive if=none,index=1,id=cache,if=none,file=/home/runner/.android/avd/einfachstart91-test.avd/cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=cache,iothread=disk-iothread,modern-pio-notify -drive if=none,index=2,id=userdata,if=none,file=/home/runner/.android/avd/einfachstart91-test.avd/userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=userdata,iothread=disk-iothread,modern-pio-notify -drive if=none,index=3,id=encrypt,if=none,file=/home/runner/.android/avd/einfachstart91-test.avd/encryptionkey.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=encrypt,iothread=disk-iothread,modern-pio-notify -drive if=none,index=4,id=vendor,if=none,file=/usr/local/lib/android/sdk/system-images/android-35/google_apis/x86_64//vendor.img,read-only -device virtio-blk-pci,drive=vendor,iothread=disk-iothread,modern-pio-notify -netdev user,id=mynet -device virtio-net-pci,netdev=mynet -chardev null,id=forhvc0 -chardev null,id=forhvc1 -device virtio-serial-pci,ioeventfd=off -device virtconsole,chardev=forhvc0 -device virtconsole,chardev=forhvc1 -chardev netsim,id=bluetooth -device virtserialport,chardev=bluetooth,name=bluetooth -device virtio-serial,ioeventfd=off -chardev socket,port=37701,host=::1,nowait,nodelay,reconnect=10,ipv6,id=modem -device virtserialport,chardev=modem,name=modem -device virtio-rng-pci -show-cursor -device virtio_input_multi_touch_pci_1 -device virtio_input_multi_touch_pci_2 -device virtio_input_multi_touch_pci_3 -device virtio_input_multi_touch_pci_4 -device virtio_input_multi_touch_pci_5 -device virtio_input_multi_touch_pci_6 -device virtio_input_multi_touch_pci_7 -device virtio_input_multi_touch_pci_8 -device virtio_input_multi_touch_pci_9 -device virtio_input_multi_touch_pci_10 -device virtio_input_multi_touch_pci_11 -netdev user,id=virtio-wifi,dhcpstart=10.0.2.16 -device virtio-wifi-pci,netdev=virtio-wifi -device virtio-vsock-pci,guest-cid=77 -L /usr/local/lib/android/sdk/emulator/lib/pc-bios -soundhw virtio-snd-pci -vga none -append '8250.nr_uarts=1 clocksource=pit no_timer_check console=0 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on bootconfig' -android-hw /home/runner/.android/avd/einfachstart91-test.avd/hardware-qemu.ini
+INFO         | Concatenated QEMU options: /usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/qemu-system-x86_64-headless -dns-server 127.0.0.53 -no-audio -serial null -device goldfish_pstore,addr=0xff018000,size=0x10000,file=/home/runner/.android/avd/einfachstart91-test.avd/data/misc/pstore/pstore.bin -cpu android64 -enable-kvm -smp cores=2 -m 2560 -lcd-density 420 -object iothread,id=disk-iothread -nodefaults -kernel /usr/local/lib/android/sdk/system-images/android-35/google_apis/x86_64//kernel-ranchu -initrd /home/runner/.android/avd/einfachstart91-test.avd/initrd -drive if=none,index=0,id=system,if=none,file=/usr/local/lib/android/sdk/system-images/android-35/google_apis/x86_64//system.img,read-only -device virtio-blk-pci,drive=system,iothread=disk-iothread,modern-pio-notify -drive if=none,index=1,id=cache,if=none,file=/home/runner/.android/avd/einfachstart91-test.avd/cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=cache,iothread=disk-iothread,modern-pio-notify -drive if=none,index=2,id=userdata,if=none,file=/home/runner/.android/avd/einfachstart91-test.avd/userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=userdata,iothread=disk-iothread,modern-pio-notify -drive if=none,index=3,id=encrypt,if=none,file=/home/runner/.android/avd/einfachstart91-test.avd/encryptionkey.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=encrypt,iothread=disk-iothread,modern-pio-notify -drive if=none,index=4,id=vendor,if=none,file=/usr/local/lib/android/sdk/system-images/android-35/google_apis/x86_64//vendor.img,read-only -device virtio-blk-pci,drive=vendor,iothread=disk-iothread,modern-pio-notify -netdev user,id=mynet -device virtio-net-pci,netdev=mynet -chardev null,id=forhvc0 -chardev null,id=forhvc1 -device virtio-serial-pci,ioeventfd=off -device virtconsole,chardev=forhvc0 -device virtconsole,chardev=forhvc1 -chardev netsim,id=bluetooth -device virtserialport,chardev=bluetooth,name=bluetooth -device virtio-serial,ioeventfd=off -chardev socket,port=35415,host=::1,nowait,nodelay,reconnect=10,ipv6,id=modem -device virtserialport,chardev=modem,name=modem -device virtio-rng-pci -show-cursor -device virtio_input_multi_touch_pci_1 -device virtio_input_multi_touch_pci_2 -device virtio_input_multi_touch_pci_3 -device virtio_input_multi_touch_pci_4 -device virtio_input_multi_touch_pci_5 -device virtio_input_multi_touch_pci_6 -device virtio_input_multi_touch_pci_7 -device virtio_input_multi_touch_pci_8 -device virtio_input_multi_touch_pci_9 -device virtio_input_multi_touch_pci_10 -device virtio_input_multi_touch_pci_11 -netdev user,id=virtio-wifi,dhcpstart=10.0.2.16 -device virtio-wifi-pci,netdev=virtio-wifi -device virtio-vsock-pci,guest-cid=77 -L /usr/local/lib/android/sdk/emulator/lib/pc-bios -soundhw virtio-snd-pci -vga none -append '8250.nr_uarts=1 clocksource=pit no_timer_check console=0 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on bootconfig' -android-hw /home/runner/.android/avd/einfachstart91-test.avd/hardware-qemu.ini
 DEBUG   | Android qemu version 37.2.13.0 (build_id 16740729) (CL:N/A)
 DEBUG   | Starting QEMU main loop
 DEBUG   | registered 'boot-properties' qemud service
@@ -1182,7 +1182,7 @@ DEBUG   | goldfish_events.have-tabletmode: false
 DEBUG   | goldfish_events.have-touch: false
 DEBUG   | goldfish_events.have-multitouch: false
 DEBUG   | Adding boot property: 'net.wifi_mac_prefix' = '5554'
-WARNING: cannnot unmap ptr 0x7c6333601000 as it is in the protected range from 0x7c6293600000 to 0x7c6333800000
+WARNING: cannnot unmap ptr 0x7b5319001000 as it is in the protected range from 0x7b5279000000 to 0x7b5319200000
 INFO         | Monitoring duration of emulator setup.
 DEBUG   | Adding boot property: 'qemu.timezone' = 'Etc/UTC'
 DEBUG   | android_hw_fingerprint_init: fingerprint qemud listen service initialized
@@ -1254,12 +1254,12 @@ DEBUG   | (agc_manager_direct.cc:481): [agc] analog controller enabled: yes
 DEBUG   | (agc_manager_direct.cc:484): [agc] Min mic level: 12 (overridden: no)
 
 INFO         | Using security allow list from: /usr/local/lib/android/sdk/emulator/lib/emulator_access.json
-INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/3556/jwks/36756f04-b083-4eb1-bff5-3fa40542bcc6/active.jwk
-INFO         | Scanning /run/user/1001/avd/running/3556/jwks/36756f04-b083-4eb1-bff5-3fa40542bcc6 for jwk keys.
+INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/3267/jwks/07155106-9e64-4b2c-a0f2-ebd337da86fc/active.jwk
+INFO         | Scanning /run/user/1001/avd/running/3267/jwks/07155106-9e64-4b2c-a0f2-ebd337da86fc for jwk keys.
 INFO         | Started GRPC server at 127.0.0.1:8554, security: Local, auth: +token
-INFO         | Advertising in: /run/user/1001/avd/running/pid_3556.ini
-INFO         | Successfully initialized netsim WiFi
+INFO         | Advertising in: /run/user/1001/avd/running/pid_3267.ini
 INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Successfully initialized netsim WiFi
 DEBUG   | emulator_window_fb_rotate
 DEBUG   | CMD_SET_DISPLAY_CONFIGS
 INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
@@ -1272,23 +1272,23 @@ DEBUG   | Sending CMD_REPAINT to reposting thread
 DEBUG   | Sending CMD_REPAINT to reposting thread
 DEBUG   | Sending CMD_REPAINT to reposting thread
 DEBUG   | Reposting thread dequeueing a CMD_REPAINT
+DEBUG   | Reposting framebuffer.
+DEBUG   | No repost: no last posted color buffer
+DEBUG   | Reposting thread dequeueing a CMD_REPAINT
+DEBUG   | Reposting framebuffer.
+DEBUG   | No repost: no last posted color buffer
+DEBUG   | Reposting thread dequeueing a CMD_REPAINT
 DEBUG   | config multidisplay with config.ini 0x0 0x0 0x0
 DEBUG   | Reposting framebuffer.
 DEBUG   | No repost: no last posted color buffer
-DEBUG   | Reposting thread dequeueing a CMD_REPAINT
-DEBUG   | Reposting framebuffer.
 DEBUG   | ver_initialize: Setting search paths with 2 entries
-DEBUG   | No repost: no last posted color buffer
 INFO         | emulatorSetupEnvironment: Environment scene is not required
-DEBUG   | Reposting thread dequeueing a CMD_REPAINT
-DEBUG   | Reposting framebuffer.
-DEBUG   | No repost: no last posted color buffer
 DEBUG   | No acpi ini file provided, using default
 DEBUG   | added one RIL client
 DEBUG   | Crash info: sessionId=
 DEBUG   | Crash info: ro.build.fingerprint=google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
-DEBUG   | Crash info: avd_space=87742525440
-DEBUG   | Crash info: free_ram=14490
+DEBUG   | Crash info: avd_space=87743574016
+DEBUG   | Crash info: free_ram=14498
 DEBUG   | Crash info: hw.gpu.enabled=no
 DEBUG   | Crash info: cpu_cores=4
 DEBUG   | Crash info: PlayStore.enabled=no
@@ -1301,25 +1301,25 @@ DEBUG   | Crash info: hw.lcd.height=2400
 DEBUG   | Crash info: disk.dataPartition.size=6G
 USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
 WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
-DEBUG   | Using the same userId as Android Studio for metrics. id=f845a1d6-d893-4da4-9ceb-80e6a091d9c9
+DEBUG   | Using the same userId as Android Studio for metrics. id=7a26b1b5-f721-48df-b775-37d38bc36f8a
 DEBUG   | No acpi ini file provided, using default
 WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
 VERBOSE | Created RenderThread. Active RenderThreads: 2
 VERBOSE | Destroyed RenderThread. Active RenderThreads: 1
-DEBUG   | Started new RenderThread (total 1) @0x56c3ac059dc0
+DEBUG   | Started new RenderThread (total 1) @0x629bb7d3d880
 VERBOSE | Created RenderThread. Active RenderThreads: 2
-DEBUG   | Started new RenderThread (total 2) @0x56c3ac059880
+DEBUG   | Started new RenderThread (total 2) @0x629bb794a1c0
 DEBUG   | ColorBuffer 3, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 3
-DEBUG   | Started new RenderThread (total 3) @0x56c3abe701c0
+DEBUG   | Started new RenderThread (total 3) @0x629bb7d3da40
 VERBOSE | Created RenderThread. Active RenderThreads: 4
-DEBUG   | Started new RenderThread (total 4) @0x56c3abe70540
+DEBUG   | Started new RenderThread (total 4) @0x629bb794a700
 DEBUG   | setDisplayPose 0 x -1 y -1 w 1080 h 2400 dpi 420
 DEBUG   | ColorBuffer 4, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 5, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 6, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 5
-DEBUG   | Started new RenderThread (total 5) @0x56c3abe708c0
+DEBUG   | Started new RenderThread (total 5) @0x629bb794aa80
 DEBUG   | ColorBuffer 7, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 8, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 9, 128x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 65536, type: 0, props: 15 / 1]
@@ -1329,180 +1329,190 @@ DEBUG   | ColorBuffer 12, 128x128, VK_FORMAT_R16G16B16A16_SFLOAT, Memory [size: 
 DEBUG   | _hwFingerprint_connect: connect finger print listen is called
 DEBUG   | got message from guest system fingerprint HAL
 VERBOSE | Created RenderThread. Active RenderThreads: 6
-DEBUG   | Started new RenderThread (total 6) @0x56c3ae1c21c0
+DEBUG   | Started new RenderThread (total 6) @0x629bc2b501c0
 VERBOSE | Created RenderThread. Active RenderThreads: 7
-DEBUG   | Started new RenderThread (total 7) @0x56c3ae1c2700
+DEBUG   | Started new RenderThread (total 7) @0x629bc2b50540
 DEBUG   | ColorBuffer 15, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 8
-DEBUG   | Started new RenderThread (total 8) @0x56c3ae1c2a80
+DEBUG   | Started new RenderThread (total 8) @0x629bc2b508c0
 DEBUG   | ColorBuffer 16, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 18, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 19, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 9
-DEBUG   | Started new RenderThread (total 9) @0x56c3ae1c2540
+DEBUG   | Started new RenderThread (total 9) @0x629bb794ae00
 DEBUG   | ColorBuffer 24, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 10
-DEBUG   | Started new RenderThread (total 10) @0x56c3ae1c3500
+DEBUG   | Started new RenderThread (total 10) @0x629bc2b50e00
 DEBUG   | ColorBuffer 25, 922x1024, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 3776512, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 27, 922x1024, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 3776512, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 28, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 11
-DEBUG   | Started new RenderThread (total 11) @0x56c3bfa24380
+DEBUG   | Started new RenderThread (total 11) @0x629bc8664000
+INFO         | Boot completed in 27122 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+DEBUG   | Enable overlay packages with name ending in pixel_8
 DEBUG   | ColorBuffer 29, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 31, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 32, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-INFO         | Boot completed in 37814 ms
-INFO         | Increasing screen off timeout, logcat buffer size to 2M.
-DEBUG   | Enable overlay packages with name ending in pixel_8
-DEBUG   | ColorBuffer 33, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 35, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 36, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 12
-DEBUG   | Started new RenderThread (total 12) @0x56c3bfa25340
-DEBUG   | ColorBuffer 39, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | Started new RenderThread (total 12) @0x629bc2b51a40
+DEBUG   | ColorBuffer 35, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 13
-DEBUG   | Started new RenderThread (total 13) @0x56c3bfa24e00
-DEBUG   | ColorBuffer 40, 48x48, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 9216, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 42, 48x48, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 9216, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 43, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 44, 42x42, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 7056, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 46, 42x42, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 7056, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 47, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 49, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 50, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | Started new RenderThread (total 13) @0x629bc2b51880
+DEBUG   | ColorBuffer 36, 48x48, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 9216, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 38, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 39, 48x48, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 9216, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 40, 42x42, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 7056, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 42, 42x42, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 7056, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 43, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 45, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 46, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 48, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 50, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 51, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 52, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 53, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 55, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 56, 1080x252, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 1088640, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 58, 1080x252, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 1088640, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 59, 1080x252, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 1088640, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 60, 284x10, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 11360, type: 0, props: 15 / 1]
+VERBOSE | glReadPixels seems OK for tex(internal:0x8058 fmt:0x1908 type:0x1401) read(fmt:0x1908 type:0x1401).
+DEBUG   | ColorBuffer 61, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 63, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 64, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 66, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
 DEBUG   | pattern string for overlay package = com.[^[]+.pixel_8
 DEBUG   | overlay package=com.android.internal.emulation.pixel_8
+DEBUG   | ColorBuffer 67, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 69, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 70, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | overlay package=com.android.internal.emulation.pixel_8
+DEBUG   | ColorBuffer 71, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
 DEBUG   | overlay package=com.android.internal.emulation.pixel_8
-DEBUG   | overlay package=com.android.systemui.emulation.pixel_8
-DEBUG   | overlay package=com.android.systemui.emulation.pixel_8
 DEBUG   | overlay package=com.android.systemui.emulation.pixel_8
 VERBOSE | Created RenderThread. Active RenderThreads: 14
-DEBUG   | Started new RenderThread (total 14) @0x56c3bfa24700
-DEBUG   | ColorBuffer 54, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 15
-DEBUG   | Started new RenderThread (total 15) @0x56c3bfa25180
-DEBUG   | ColorBuffer 55, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 57, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 58, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 59, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 61, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 62, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 63, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 65, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 66, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 67, 1080x74, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 319680, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 69, 1080x74, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 319680, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 70, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 71, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 73, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 74, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 76, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 77, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 79, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 80, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 82, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | Started new RenderThread (total 14) @0x629bc8664a80
+DEBUG   | overlay package=com.android.systemui.emulation.pixel_8
+DEBUG   | overlay package=com.android.systemui.emulation.pixel_8
+DEBUG   | ColorBuffer 72, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 74, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 75, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 77, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 80, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 81, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 83, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 84, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 85, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 87, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 88, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 89, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 91, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 92, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 93, 1080x74, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 319680, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 95, 1080x74, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 319680, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 96, 1080x74, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 319680, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 98, 1080x74, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 319680, type: 0, props: 15 / 1]
 DEBUG   | Registering pipe service multidisplay
-DEBUG   | MultiDisplayPipe created 0x56c3b0c42540
+DEBUG   | MultiDisplayPipe created 0x629bb87ff0a0
 DEBUG   | MultiDisplayPipe recevied QUERY
 DEBUG   | MultiDisplayPipe send add id 0 width 1080 height 2400 dpi 420 flag 0
-DEBUG   | ColorBuffer 83, 1080x252, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 1088640, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 85, 1080x252, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 1088640, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 86, 1080x252, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 1088640, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 87, 284x10, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 11360, type: 0, props: 15 / 1]
-VERBOSE | glReadPixels seems OK for tex(internal:0x8058 fmt:0x1908 type:0x1401) read(fmt:0x1908 type:0x1401).
-DEBUG   | ColorBuffer 88, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 90, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 91, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 92, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 94, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 95, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 97, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 98, 48x48, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 9216, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 100, 48x48, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 9216, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 101, 42x42, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 7056, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 103, 42x42, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 7056, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 104, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 105, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 107, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 16
-DEBUG   | Started new RenderThread (total 16) @0x56c3bca7a8c0
-DEBUG   | ColorBuffer 110, 1x1, VK_FORMAT_R5G6B5_UNORM_PACK16, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 99, 48x48, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 9216, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 101, 48x48, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 9216, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 102, 42x42, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 7056, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 104, 42x42, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 7056, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 105, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 107, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 108, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 110, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 15
+DEBUG   | Started new RenderThread (total 15) @0x629bd3d4a1c0
 DEBUG   | ColorBuffer 113, 1x1, VK_FORMAT_R5G6B5_UNORM_PACK16, Memory [size: 16, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 16
+DEBUG   | Started new RenderThread (total 16) @0x629bd3d4a540
+DEBUG   | ColorBuffer 116, 1x1, VK_FORMAT_R5G6B5_UNORM_PACK16, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 119, 1x1, VK_FORMAT_R5G6B5_UNORM_PACK16, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 122, 1x1, VK_FORMAT_R5G6B5_UNORM_PACK16, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 123, 1080x74, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 319680, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 17
-DEBUG   | Started new RenderThread (total 17) @0x56c3bca7ac40
-DEBUG   | ColorBuffer 116, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 117, 63x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16384, type: 0, props: 15 / 1]
+DEBUG   | Started new RenderThread (total 17) @0x629bd3d4a8c0
+DEBUG   | ColorBuffer 124, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 128, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 129, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 130, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 132, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 133, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 135, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 136, 1080x132, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 570240, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 137, 63x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16384, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 18
-DEBUG   | Started new RenderThread (total 18) @0x56c3bfa24000
-DEBUG   | ColorBuffer 120, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | Started new RenderThread (total 18) @0x629bd3d4b180
+DEBUG   | ColorBuffer 140, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 19
-DEBUG   | Started new RenderThread (total 19) @0x56c3bfa25a40
-DEBUG   | ColorBuffer 123, 63x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16384, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 124, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 126, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 127, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 129, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 130, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 131, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
-DEBUG   | Waiting for exit signal RenderThread @0x56c3ae1c2700
+DEBUG   | Started new RenderThread (total 19) @0x629bd3d4aa80
+DEBUG   | ColorBuffer 143, 63x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16384, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0x629bc2b50540
 VERBOSE | Created RenderThread. Active RenderThreads: 20
-DEBUG   | Exited a RenderThread @0x56c3ae1c2700
+DEBUG   | Exited a RenderThread @0x629bc2b50540
 VERBOSE | Destroyed RenderThread. Active RenderThreads: 19
-DEBUG   | Started new RenderThread (total 19) @0x56c3bfa25880
-DEBUG   | ColorBuffer 134, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 20
-DEBUG   | Started new RenderThread (total 20) @0x56c3bca7afc0
-DEBUG   | ColorBuffer 137, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 21
-DEBUG   | Started new RenderThread (total 21) @0x56c3ae1c2700
-DEBUG   | ColorBuffer 138, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 140, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 141, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 142, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 144, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 145, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 146, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 22
-DEBUG   | Started new RenderThread (total 22) @0x56c3c5f55180
-DEBUG   | ColorBuffer 149, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 23
-DEBUG   | Started new RenderThread (total 23) @0x56c3c5f55340
+DEBUG   | Started new RenderThread (total 19) @0x629bd1839a40
+DEBUG   | ColorBuffer 146, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 147, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 149, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 150, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 152, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 153, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 154, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 156, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 157, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 158, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
-DEBUG   | Waiting for exit signal RenderThread @0x56c3bca7ac40
-DEBUG   | Waiting for exit signal RenderThread @0x56c3c5f55180
-DEBUG   | ColorBuffer 159, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 20
+DEBUG   | Started new RenderThread (total 20) @0x629bd85976c0
+DEBUG   | ColorBuffer 153, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 21
+DEBUG   | Started new RenderThread (total 21) @0x629bd8597880
+DEBUG   | ColorBuffer 154, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 156, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 157, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0x629bd3d4a8c0
+DEBUG   | ColorBuffer 160, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 161, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 162, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 163, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 163, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 164, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 166, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 167, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 24
-DEBUG   | Exited a RenderThread @0x56c3bca7ac40
-VERBOSE | Destroyed RenderThread. Active RenderThreads: 23
-DEBUG   | Exited a RenderThread @0x56c3c5f55180
-VERBOSE | Destroyed RenderThread. Active RenderThreads: 22
-DEBUG   | Started new RenderThread (total 22) @0x56c3bfa248c0
-DEBUG   | ColorBuffer 170, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 165, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 22
+DEBUG   | Exited a RenderThread @0x629bd3d4a8c0
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 21
+DEBUG   | Started new RenderThread (total 21) @0x629bc2b51340
+DEBUG   | ColorBuffer 168, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 22
+DEBUG   | Started new RenderThread (total 22) @0x629bb9a028c0
+DEBUG   | ColorBuffer 169, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 DEBUG   | ColorBuffer 171, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 173, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 174, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 175, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 177, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 178, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 179, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 180, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 182, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 183, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 184, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 172, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
 VERBOSE | Created RenderThread. Active RenderThreads: 23
-DEBUG   | Started new RenderThread (total 23) @0x56c3c5f54a80
-DEBUG   | ColorBuffer 187, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
-DEBUG   | Waiting for exit signal RenderThread @0x56c3bfa248c0
+DEBUG   | Started new RenderThread (total 23) @0x629bc2b50540
+DEBUG   | ColorBuffer 175, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 176, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 178, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 179, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 180, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 183, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0x629bc2b51340
+DEBUG   | ColorBuffer 184, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 186, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 187, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 188, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 190, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 191, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 192, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 194, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 195, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 24
+DEBUG   | Exited a RenderThread @0x629bc2b51340
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 23
+DEBUG   | Started new RenderThread (total 23) @0x629bb9a03340
+DEBUG   | ColorBuffer 198, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 199, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 200, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 202, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 203, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 204, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 206, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 207, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 208, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0x629bb9a03340

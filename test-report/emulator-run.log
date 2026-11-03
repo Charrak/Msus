@@ -22,7 +22,7 @@ This program is a derivative of the QEMU CPU emulator (www.qemu.org).
 cannot connect to daemon at tcp:5037: Connection refused
 * daemon not running; starting now at tcp:5037
 * daemon started successfully
-Emulator-PID: 3556
+Emulator-PID: 3267
 sys.boot_completed=1
 List of devices attached
 emulator-5554	device
@@ -35,7 +35,7 @@ Success
 Performing Streamed Install
 Success
       android.intent.action.MAIN:
-        738a8f1 de.einfachstart91.launcher/.MainActivity filter 1ff8cd6
+        73f8824 de.einfachstart91.launcher/.MainActivity filter 1601f8d
           Action: "android.intent.action.MAIN"
 === Instrumentation-Test ===
 INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
@@ -64,35 +64,14 @@ INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTes
 INSTRUMENTATION_STATUS: current=2
 INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
 INSTRUMENTATION_STATUS: numtests=2
-INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
-	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
-	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
-	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
-	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
-
-INSTRUMENTATION_STATUS: stream=
-Error in kontaktSucheZeigtAlleKontakteAn(de.einfachstart91.launcher.LauncherInstrumentedTest):
-java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
-	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
-	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
-	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
-	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
-
+INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: test=kontaktSucheZeigtAlleKontakteAn
-INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_RESULT: stream=
 
-Time: 16.983
-There was 1 failure:
-1) kontaktSucheZeigtAlleKontakteAn(de.einfachstart91.launcher.LauncherInstrumentedTest)
-java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
-	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
-	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
-	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
-	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
+Time: 15.714
 
-FAILURES!!!
-Tests run: 2,  Failures: 1
+OK (2 tests)
 
 
 INSTRUMENTATION_CODE: -1
