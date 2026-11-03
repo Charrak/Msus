@@ -31,14 +31,18 @@ Daemon will be stopped at the end of the build
 > Task :app:javaPreCompileDebug
 > Task :app:mergeDebugShaders
 > Task :app:compileDebugShaders NO-SOURCE
-> Task :app:processDebugManifestForPackage
 > Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:processDebugManifestForPackage
 > Task :app:mergeDebugAssets
 > Task :app:compressDebugAssets
 > Task :app:desugarDebugFileDependencies
 > Task :app:processDebugResources
 > Task :app:checkDebugDuplicateClasses
+
 > Task :app:compileDebugKotlin
+e: The daemon has terminated unexpectedly on startup attempt #1 with error code: 0. The daemon process output:
+    1. Kotlin compile daemon is ready
+
 > Task :app:mergeExtDexDebug
 
 > Task :app:compileDebugKotlin
@@ -67,12 +71,15 @@ Unable to strip the following libraries, packaging them as they are: libandroidx
 > Task :app:generateDebugAndroidTestResValues FROM-CACHE
 > Task :app:mapDebugAndroidTestSourceSetPaths
 > Task :app:generateDebugAndroidTestResources
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
 > Task :app:processDebugAndroidTestManifest
 > Task :app:javaPreCompileDebugAndroidTest FROM-CACHE
+> Task :app:mergeDebugAndroidTestResources
 > Task :app:mergeDebugAndroidTestShaders
 > Task :app:compileDebugAndroidTestShaders NO-SOURCE
 > Task :app:generateDebugAndroidTestAssets UP-TO-DATE
-> Task :app:mergeDebugAndroidTestResources
 > Task :app:mergeDebugAndroidTestAssets
 > Task :app:compressDebugAndroidTestAssets FROM-CACHE
 > Task :app:desugarDebugAndroidTestFileDependencies FROM-CACHE
@@ -83,22 +90,19 @@ Unable to strip the following libraries, packaging them as they are: libandroidx
 > Task :app:dexBuilderDebugAndroidTest
 > Task :app:mergeDebugAndroidTestGlobalSynthetics FROM-CACHE
 > Task :app:processDebugAndroidTestJavaRes
-> Task :app:packageDebug
-> Task :app:createDebugApkListingFileRedirect
-> Task :app:assembleDebug
 > Task :app:mergeLibDexDebugAndroidTest FROM-CACHE
 > Task :app:mergeDebugAndroidTestJniLibFolders
-> Task :app:mergeDebugAndroidTestJavaResource
 > Task :app:mergeProjectDexDebugAndroidTest
 > Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
 > Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
 > Task :app:validateSigningDebugAndroidTest
 > Task :app:writeDebugAndroidTestSigningConfigVersions
+> Task :app:mergeDebugAndroidTestJavaResource
 > Task :app:mergeExtDexDebugAndroidTest
 > Task :app:packageDebugAndroidTest
 > Task :app:createDebugAndroidTestApkListingFileRedirect
 > Task :app:assembleDebugAndroidTest
 > Task :app:assembleAndroidTest
 
-BUILD SUCCESSFUL in 2m 35s
+BUILD SUCCESSFUL in 2m 23s
 62 actionable tasks: 56 executed, 6 from cache
