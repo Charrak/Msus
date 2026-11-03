@@ -64,7 +64,21 @@ jobs:
       - name: APK bauen
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon --stacktrace
+          set -o pipefail
+          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee gradle-build.log
+
+      - name: Gradle-Protokoll bei Fehler sichern
+        if: failure()
+        run: |
+          mkdir -p build-report
+          cp gradle-build.log build-report/gradle-build.log 2>/dev/null || echo "Kein Gradle-Protokoll vorhanden." > build-report/gradle-build.log
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f build-report/gradle-build.log
+          if ! git diff --cached --quiet; then
+            git commit -m "Build: Gradle-Protokoll zur Fehlerdiagnose"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
 
       - name: APK ausliefern und prüfen
         run: |
