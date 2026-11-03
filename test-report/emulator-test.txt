@@ -1,0 +1,31 @@
+EinfachStart 91 – Emulator-Testbericht
+Datum (UTC): 2026-11-03T22:15:42Z
+Branch: arena/f1d8df85-msus
+GitHub-Run: 41728410475
+Job-Status: success
+Emulator: Android 15 (API 35), google_apis, x86_64, AVD mit pixel_8-Geräteprofil, KVM
+
+=== Build ===
+assembleDebug und assembleAndroidTest: BUILD SUCCESSFUL
+Gradle-Protokoll: test-report/gradle-build.log
+
+=== Boot und Installation ===
+sys.boot_completed=1
+Gerät: emulator-5554
+App-APK: app/build/outputs/apk/debug/app-debug.apk -> adb install -r: Success
+Test-APK: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk -> adb install -r: Success
+HOME-/MAIN-Registrierung im Package-Dump gefunden: de.einfachstart91.launcher/.MainActivity
+
+=== Instrumentation-Ausgabe ===
+INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
+INSTRUMENTATION_STATUS_CODE: 0
+Time: 9.561
+OK (1 test)
+INSTRUMENTATION_CODE: -1
+
+=== Geprüfte UI-Elemente ===
+EINFACHSTART 91, MEINE LIEBSTEN, TELEFON, NACHRICHTEN, NOTFALL – HILFE RUFEN.
+
+Ausführliche Rohausgaben: test-report/emulator-test-output.txt und test-report/emulator-run.log.

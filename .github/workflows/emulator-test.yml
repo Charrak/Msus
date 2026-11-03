@@ -1,0 +1,166 @@
+name: EinfachStart 91 – Emulator-Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['arena/f1d8df85-msus']
+    paths:
+      - '.github/workflows/emulator-test.yml'
+      - '.emulator-trigger'
+
+permissions:
+  contents: write
+
+env:
+  ANDROID_HOME: /usr/local/lib/android/sdk
+  ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+
+jobs:
+  instrumented-test:
+    name: Installation und UI-Test auf Android-Emulator
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Vorinstalliertes Android-SDK und Werkzeugpfade finden
+        run: |
+          SDK_MANAGER=$(find "$ANDROID_HOME" -name sdkmanager -type f -print -quit)
+          test -n "$SDK_MANAGER" || { echo "::error::sdkmanager nicht gefunden"; exit 1; }
+          echo "$(dirname "$SDK_MANAGER")" >> "$GITHUB_PATH"
+          for TOOL_DIR in "$ANDROID_HOME/platform-tools" "$ANDROID_HOME/emulator"; do
+            test -d "$TOOL_DIR" && echo "$TOOL_DIR" >> "$GITHUB_PATH"
+          done
+          export PATH="$(dirname "$SDK_MANAGER"):$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+          sdkmanager --version
+          echo "::notice::SDK-Werkzeugpfad: $(dirname "$SDK_MANAGER")"
+
+      - name: SDK, Emulator und System-Image installieren
+        run: |
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools" "emulator" "system-images;android-35;google_apis;x86_64" 2>&1 | tee sdk-install.log
+          sdkmanager --list_installed | grep 'system-images' || true
+
+      - name: App- und Test-APK bauen
+        run: |
+          chmod +x gradlew
+          set -o pipefail
+          ./gradlew assembleDebug assembleAndroidTest --no-daemon --stacktrace 2>&1 | tee gradle-build.log
+
+      - name: Fehlende Emulator-Bibliotheken installieren
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y libpulse0
+
+      - name: KVM für Hardwarebeschleunigung freischalten
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm
+
+      - name: Emulator starten, APK installieren und UI testen
+        run: |
+          set -euo pipefail
+          AVD_NAME=einfachstart91-test
+          SYS_IMAGE="system-images;android-35;google_apis;x86_64"
+          export ANDROID_AVD_HOME="$HOME/.android/avd"
+          mkdir -p "$ANDROID_AVD_HOME"
+          {
+            echo "ANDROID_AVD_HOME=$ANDROID_AVD_HOME"
+            echo "=== Verfügbare Pixel-8-Profile ==="
+            avdmanager list device | grep -i "pixel 8" || true
+            echo "=== AVD anlegen ==="
+            if ! echo no | avdmanager create avd -n "$AVD_NAME" -k "$SYS_IMAGE" -d pixel_8 --force; then
+              echo "Pixel-8-Profil nicht verfügbar – Standardgerät verwenden"
+              echo no | avdmanager create avd -n "$AVD_NAME" -k "$SYS_IMAGE" --force
+            fi
+            echo "=== Angelegte AVDs ==="
+            avdmanager list avd
+            find "$ANDROID_AVD_HOME" -maxdepth 2 -name "$AVD_NAME*" -print
+            echo "=== Emulator starten ==="
+            EMULATOR_BIN="$ANDROID_HOME/emulator/emulator"
+            test -x "$EMULATOR_BIN"
+            export QT_QPA_PLATFORM=offscreen
+            export LD_LIBRARY_PATH="$ANDROID_HOME/emulator/lib64:$ANDROID_HOME/emulator/lib64/qt/lib:${LD_LIBRARY_PATH:-}"
+            "$EMULATOR_BIN" -version | head -3 || true
+            adb kill-server || true
+            adb start-server
+            "$EMULATOR_BIN" -avd "$AVD_NAME" -no-window -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -no-snapstorage -wipe-data -verbose > emulator-boot.log 2>&1 &
+            EMULATOR_PID=$!
+            echo "Emulator-PID: $EMULATOR_PID"
+            timeout 180 adb wait-for-device
+            BOOT=""
+            for i in $(seq 1 60); do
+              BOOT=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' || true)
+              if [ "$BOOT" = "1" ]; then break; fi
+              if ! kill -0 "$EMULATOR_PID" 2>/dev/null; then
+                echo "Emulator-Prozess vor Abschluss des Boots beendet."
+                break
+              fi
+              sleep 5
+            done
+            echo "sys.boot_completed=$BOOT"
+            test "$BOOT" = "1"
+            adb devices
+            APP_APK=$(find app/build/outputs/apk/debug -name "*.apk" -type f | head -1)
+            TEST_APK=$(find app/build/outputs/apk/androidTest -name "*.apk" -type f | head -1)
+            test -n "$APP_APK" && test -n "$TEST_APK"
+            echo "App-APK: $APP_APK"
+            echo "Test-APK: $TEST_APK"
+            echo "=== APK-Installation ==="
+            adb install -r "$APP_APK"
+            adb install -r "$TEST_APK"
+            adb shell pm dump de.einfachstart91.launcher | grep -m1 -A2 'android.intent.action.MAIN' || true
+            echo "=== Instrumentation-Test ==="
+            adb shell am instrument -w -r -e debug false de.einfachstart91.launcher.test/androidx.test.runner.AndroidJUnitRunner | tee emulator-test-output.txt
+            grep -q "OK (" emulator-test-output.txt
+          } 2>&1 | tee emulator-run.log
+
+      - name: Testergebnis und Diagnose speichern
+        if: always()
+        run: |
+          mkdir -p test-report
+          {
+            echo "EinfachStart 91 – Emulator-Testbericht"
+            echo "Datum (UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Branch: $GITHUB_REF_NAME"
+            echo "Commit: $GITHUB_SHA"
+            echo "GitHub-Run: ${{ github.run_id }} (Versuch ${{ github.run_attempt }})"
+            echo "Job-Status: ${{ job.status }}"
+            echo "Emulator: Android 15 (API 35), google_apis, x86_64, Pixel-8-Profil"
+            echo
+            echo "=== Instrumentation-Ausgabe ==="
+            cat emulator-test-output.txt 2>/dev/null || echo "Keine Ausgabe vorhanden."
+            echo
+            echo "=== Installation und Boot (Auszug) ==="
+            grep -E 'sys.boot_completed|List of devices|App-APK|Test-APK|Performing Streamed Install|Success|android.intent.action.MAIN' emulator-run.log 2>/dev/null | tail -20 || echo "Kein Installationsprotokoll vorhanden."
+            echo
+            echo "=== Gradle-Build (Abschluss) ==="
+            tail -8 gradle-build.log 2>/dev/null || echo "Kein Gradle-Protokoll vorhanden."
+          } > test-report/emulator-test.txt
+          cp gradle-build.log test-report/gradle-build.log 2>/dev/null || true
+          cp emulator-test-output.txt test-report/emulator-test-output.txt 2>/dev/null || true
+          cp emulator-run.log test-report/emulator-run.log 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f test-report/emulator-test.txt
+          for LOG in test-report/gradle-build.log test-report/emulator-test-output.txt test-report/emulator-run.log; do
+            test -f "$LOG" && git add -f "$LOG"
+          done
+          if git diff --cached --quiet; then
+            echo "Keine Änderung am Testbericht."
+          else
+            git commit -m "Test: Emulator-Bericht für EinfachStart 91"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi

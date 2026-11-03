@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#FFFAFAFA</color>
+    <color name="dark_text">#FF1A1A1A</color>
+    <color name="blue_phone">#FF1565C0</color>
+    <color name="green_messages">#FF2E7D32</color>
+    <color name="red_emergency">#FFC62828</color>
+    <color name="orange_important">#FFEF6C00</color>
+    <color name="ic_launcher_background">#FF1565C0</color>
+</resources>
