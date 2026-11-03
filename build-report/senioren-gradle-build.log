@@ -1,0 +1,133 @@
+Downloading https://services.gradle.org/distributions/gradle-9.4.1-bin.zip
+.............10%.............20%.............30%.............40%.............50%.............60%..............70%.............80%.............90%.............100%
+
+Welcome to Gradle 9.4.1!
+
+Here are the highlights of this release:
+ - Java 26 support
+ - Non-class-based JVM tests
+ - Enhanced console progress bar
+
+For more details see https://docs.gradle.org/9.4.1/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.disallowKotlinSourceSets=false' is experimental.
+The current default is 'true'.
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/build.gradle.kts:7:1: 'fun Project.android(configure: Action<BaseAppModuleExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.ApplicationExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:generateDebugBuildConfig
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:processDebugNavigationResources
+> Task :app:parseDebugLocalResources
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:javaPreCompileDebug
+> Task :app:generateDebugRFile
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:desugarDebugFileDependencies
+> Task :app:checkDebugAarMetadata
+> Task :app:mapDebugSourceSetPaths
+> Task :app:compileDebugNavigationResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:mergeDebugResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:mergeDebugJniLibFolders
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeDebugNativeLibs
+> Task :app:kspDebugKotlin
+> Task :app:processDebugManifestForPackage
+> Task :app:mergeExtDexDebug
+> Task :app:mergeLibDexDebug
+
+> Task :app:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libdatastore_shared_counter.so, libimage_processing_util_jni.so, libsurface_util_jni.so. Run with --info option to learn more.
+
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:processDebugResources
+> Task :app:compileDebugKotlin
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/LauncherApp.kt:24:14 'fun fallbackToDestructiveMigration(): RoomDatabase.Builder<LauncherDatabase>' is deprecated. Replace by overloaded version with parameter to indicate if all tables should be dropped or not.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/MainActivity.kt:158:116 'val state: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/MainActivity.kt:192:40 'static field FLAG_SHOW_WHEN_LOCKED: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/MainActivity.kt:193:40 'static field FLAG_TURN_SCREEN_ON: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/MainActivity.kt:194:40 'static field FLAG_DISMISS_KEYGUARD: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/receiver/SmsReceiver.kt:171:34 'static fun compare(p0: String!, p1: String!): Boolean' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/receiver/SmsReceiver.kt:303:28 'val networkType: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/FallDetectionService.kt:60:35 'static field VIBRATOR_SERVICE: String' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/SeniorInCallService.kt:43:38 'val state: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/SeniorInCallService.kt:51:26 'val state: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/SeniorInCallService.kt:66:23 'fun setAudioRoute(p0: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/SeniorInCallService.kt:77:17 'fun setAudioRoute(p0: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/SeniorInCallService.kt:123:37 'val callAudioState: CallAudioState!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/SeniorInCallService.kt:125:41 'val state: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/SeniorInCallService.kt:149:18 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/service/SeniorInCallService.kt:150:15 'fun onCallAudioStateChanged(p0: CallAudioState!): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/AlarmTriggerScreen.kt:72:53 'static field VIBRATOR_SERVICE: String' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/AlarmTriggerScreen.kt:110:48 'static field FLAG_DISMISS_KEYGUARD: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/AlarmTriggerScreen.kt:111:48 'static field FLAG_SHOW_WHEN_LOCKED: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/AlarmTriggerScreen.kt:112:48 'static field FLAG_TURN_SCREEN_ON: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/AlarmTriggerScreen.kt:121:51 'static field SCREEN_BRIGHT_WAKE_LOCK: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/AlarmTriggerScreen.kt:121:91 'static field ACQUIRE_CAUSES_WAKEUP: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/AlarmTriggerScreen.kt:187:27 'fun vibrate(p0: LongArray!, p1: Int): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/AlarmTriggerScreen.kt:284:154 'static fun getDefault(): SmsManager!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/CalendarScreen.kt:81:31 'constructor(p0: String!, p1: String!): Locale' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/CalendarScreen.kt:277:58 'constructor(p0: String!, p1: String!): Locale' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/IncomingCallScreen.kt:67:48 'static field FLAG_DISMISS_KEYGUARD: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/IncomingCallScreen.kt:68:48 'static field FLAG_SHOW_WHEN_LOCKED: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/IncomingCallScreen.kt:69:48 'static field FLAG_TURN_SCREEN_ON: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/IncomingCallScreen.kt:285:60 'val Icons.Filled.VolumeUp: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.VolumeUp.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/IncomingCallScreen.kt:285:88 'val Icons.Filled.VolumeOff: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.VolumeOff.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/MagnifierScreen.kt:72:26 'val LocalLifecycleOwner: ProvidableCompositionLocal<LifecycleOwner>' is deprecated. Moved to lifecycle-runtime-compose library in androidx.lifecycle.compose package.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/MedicationScreen.kt:371:63 'constructor(p0: String!, p1: String!): Locale' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/MessagesScreen.kt:337:44 'val Icons.Filled.Send: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Send.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/NotificationsScreen.kt:355:105 'static field MODE_BACKGROUND_ACTIVITY_START_ALLOWED: Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/PhoneScreen.kt:568:52 'val Icons.Filled.CallMissed: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.CallMissed.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/PhoneScreen.kt:569:54 'val Icons.Filled.CallReceived: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.CallReceived.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/PhoneScreen.kt:570:31 'val Icons.Filled.CallMade: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.CallMade.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/PhoneScreen.kt:760:16 'val line1Number: String!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/PhoneScreen.kt:829:42 'static field VIBRATOR_SERVICE: String' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/PhoneScreen.kt:834:18 'fun vibrate(p0: Long): Unit' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/PhotosScreen.kt:237:48 'val Icons.Filled.ArrowBack: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.ArrowBack.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/PrivacyScreen.kt:77:36 'val Icons.Filled.OpenInNew: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.OpenInNew.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/RadioScreen.kt:124:56 'val Icons.Filled.VolumeUp: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.VolumeUp.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/RemoteSupportScreen.kt:70:36 'val Icons.Filled.Launch: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.Launch.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/StepsScreen.kt:105:36 'val Icons.Filled.DirectionsWalk: ImageVector' is deprecated. Use the AutoMirrored version at Icons.AutoMirrored.Filled.DirectionsWalk.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/home/HomeDialogs.kt:372:51 'val connectionInfo: WifiInfo!' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/ui/screens/home/HomeDialogs.kt:374:21 'static fun calculateSignalLevel(p0: Int, p1: Int): Int' is deprecated. Deprecated in Java.
+w: file:///home/runner/work/Msus/Msus/sen-launcher/app/src/main/java/com/seniorenlauncher/util/LocaleHelper.kt:8:22 'constructor(p0: String!): Locale' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:dexBuilderDebug
+> Task :app:processDebugJavaRes
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:mergeProjectDexDebug
+> Task :app:mergeDebugJavaResource
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+
+BUILD SUCCESSFUL in 4m 53s
+39 actionable tasks: 39 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.4.1/userguide/configuration_cache_enabling.html
