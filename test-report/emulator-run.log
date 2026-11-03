@@ -4,60 +4,8 @@ ANDROID_AVD_HOME=/home/runner/.android/avd
     Name: Pixel 8 Pro
     Name: Pixel 8a
 === AVD anlegen ===
-Loading local repository...                                                     [=========                              ] 25% Loading local repository...       Auto-selecting single ABI x86_64
-=== Angelegte AVDs ===
-Available Android Virtual Devices:
-    Name: einfachstart91-test
-  Device: pixel_8 (Google)
-    Path: /home/runner/.android/avd/einfachstart91-test.avd
-  Target: Google APIs (Google Inc.)
-          Based on: Android 15.0 ("VanillaIceCream") Tag/ABI: google_apis/x86_64
-  Sdcard: 512 MB
-/home/runner/.android/avd/einfachstart91-test.avd
-/home/runner/.android/avd/einfachstart91-test.ini
-=== Emulator starten ===
-Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
-Copyright (C) 2006-2024 The Android Open Source Project and many others.
-This program is a derivative of the QEMU CPU emulator (www.qemu.org).
-cannot connect to daemon at tcp:5037: Connection refused
-* daemon not running; starting now at tcp:5037
-* daemon started successfully
-Emulator-PID: 3499
-sys.boot_completed=1
-List of devices attached
-emulator-5554	device
-
-App-APK: app/build/outputs/apk/debug/app-debug.apk
-Test-APK: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
-=== APK-Installation ===
-Performing Streamed Install
-Success
-Performing Streamed Install
-Success
-      android.intent.action.MAIN:
-        d76dad de.einfachstart91.launcher/.MainActivity filter ff298e2
-          Action: "android.intent.action.MAIN"
-=== Instrumentation-Test ===
-INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
-INSTRUMENTATION_STATUS: current=1
-INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
-INSTRUMENTATION_STATUS: numtests=1
-INSTRUMENTATION_STATUS: stream=
-de.einfachstart91.launcher.LauncherInstrumentedTest:
-INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
-INSTRUMENTATION_STATUS_CODE: 1
-INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
-INSTRUMENTATION_STATUS: current=1
-INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
-INSTRUMENTATION_STATUS: numtests=1
-INSTRUMENTATION_STATUS: stream=.
-INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
-INSTRUMENTATION_STATUS_CODE: 0
-INSTRUMENTATION_RESULT: stream=
-
-Time: 9.561
-
-OK (1 test)
-
-
-INSTRUMENTATION_CODE: -1
+Loading local repository...                                                     [=========                              ] 25% Loading local repository...       Error: Package path is not valid. Valid system image paths are:
+null
+Pixel-8-Profil nicht verfügbar – Standardgerät verwenden
+Loading local repository...                                                     [=========                              ] 25% Loading local repository...       Error: Package path is not valid. Valid system image paths are:
+null

@@ -1,31 +1,22 @@
 EinfachStart 91 – Emulator-Testbericht
-Datum (UTC): 2026-11-03T22:15:42Z
+Datum (UTC): 2026-11-03T22:23:03Z
 Branch: arena/f1d8df85-msus
-GitHub-Run: 41728410475
-Job-Status: success
-Emulator: Android 15 (API 35), google_apis, x86_64, AVD mit pixel_8-Geräteprofil, KVM
-
-=== Build ===
-assembleDebug und assembleAndroidTest: BUILD SUCCESSFUL
-Gradle-Protokoll: test-report/gradle-build.log
-
-=== Boot und Installation ===
-sys.boot_completed=1
-Gerät: emulator-5554
-App-APK: app/build/outputs/apk/debug/app-debug.apk -> adb install -r: Success
-Test-APK: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk -> adb install -r: Success
-HOME-/MAIN-Registrierung im Package-Dump gefunden: de.einfachstart91.launcher/.MainActivity
+Commit: b0af5bc6d1b86f04a27f519669175355bcd2575d
+GitHub-Run: 41729723356 (Versuch 1)
+Job-Status: failure
+Emulator: Android 15 (API 35), google_apis, x86_64, Pixel-8-Profil
 
 === Instrumentation-Ausgabe ===
-INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
-INSTRUMENTATION_STATUS: numtests=1
-INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
-INSTRUMENTATION_STATUS_CODE: 0
-Time: 9.561
-OK (1 test)
-INSTRUMENTATION_CODE: -1
+Keine Ausgabe vorhanden.
 
-=== Geprüfte UI-Elemente ===
-EINFACHSTART 91, MEINE LIEBSTEN, TELEFON, NACHRICHTEN, NOTFALL – HILFE RUFEN.
+=== Installation und Boot (Auszug) ===
 
-Ausführliche Rohausgaben: test-report/emulator-test-output.txt und test-report/emulator-run.log.
+=== Gradle-Build (Abschluss) ===
+> Task :app:mergeExtDexDebugAndroidTest
+> Task :app:packageDebugAndroidTest
+> Task :app:createDebugAndroidTestApkListingFileRedirect
+> Task :app:assembleDebugAndroidTest
+> Task :app:assembleAndroidTest
+
+BUILD SUCCESSFUL in 2m 40s
+62 actionable tasks: 56 executed, 6 from cache
