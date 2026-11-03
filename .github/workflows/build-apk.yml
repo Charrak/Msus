@@ -40,13 +40,18 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Vorinstalliertes Android-SDK prüfen
+      - name: Vorinstalliertes Android-SDK und sdkmanager finden
         run: |
           echo "::notice::JAVA_HOME=$JAVA_HOME"
           echo "::notice::ANDROID_HOME=$ANDROID_HOME"
-          echo "::notice::sdkmanager: $(command -v sdkmanager || echo nicht-im-PATH)"
+          SDK_MANAGER=$(find "$ANDROID_HOME" -name sdkmanager -type f -print -quit)
+          test -n "$SDK_MANAGER" || { echo "::error::sdkmanager nicht gefunden"; exit 1; }
+          SDK_BIN=$(dirname "$SDK_MANAGER")
+          echo "::notice::sdkmanager: $SDK_MANAGER"
+          echo "$SDK_BIN" >> "$GITHUB_PATH"
           echo "::notice::Plattformen vorher: $(ls "$ANDROID_HOME/platforms" 2>/dev/null | tr '\n' ' ')"
           echo "::notice::Build-Tools vorher: $(ls "$ANDROID_HOME/build-tools" 2>/dev/null | tr '\n' ' ')"
+          export PATH="$SDK_BIN:$PATH"
           sdkmanager --version
 
       - name: SDK-Komponenten installieren
