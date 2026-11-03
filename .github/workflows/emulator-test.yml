@@ -1,0 +1,102 @@
+name: EinfachStart 91 – Emulator-Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['arena/f1d8df85-msus']
+    paths:
+      - '.github/workflows/emulator-test.yml'
+      - '.emulator-trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  instrumented-test:
+    name: Installation und UI-Test auf Android-Emulator
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android-SDK verfügbar machen
+        uses: android-actions/setup-android@v3
+
+      - name: SDK, Emulator und System-Image installieren
+        run: |
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools" "emulator" "system-images;android-34;google_apis;x86_64" > /dev/null
+          echo "::notice::System-Images: $(sdkmanager --list_installed | grep 'system-images' | head -5)"
+
+      - name: Gradle-Cache vorbereiten
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: App- und Test-APK bauen
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug assembleAndroidTest --no-daemon --stacktrace
+
+      - name: KVM für Hardwarebeschleunigung freischalten
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm
+
+      - name: Emulator starten, APK installieren und UI testen
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_8
+          avd-name: einfachstart91-test
+          cores: 2
+          ram-size: 2048M
+          disable-animations: true
+          emulator-options: -no-window -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot
+          script: |
+            set -o pipefail
+            APP_APK=$(find app/build/outputs/apk/debug -name "*.apk" -type f | head -1)
+            TEST_APK=$(find app/build/outputs/apk/androidTest -name "*.apk" -type f | head -1)
+            echo "App-APK: $APP_APK"
+            echo "Test-APK: $TEST_APK"
+            adb install -r "$APP_APK"
+            adb install -r "$TEST_APK"
+            adb shell am instrument -w -r -e debug false de.einfachstart91.launcher.test/androidx.test.runner.AndroidJUnitRunner | tee emulator-test-output.txt
+            grep -q "OK (" emulator-test-output.txt
+
+      - name: Testergebnis speichern
+        if: always()
+        run: |
+          mkdir -p test-report
+          {
+            echo "EinfachStart 91 – Emulator-Testbericht"
+            echo "Datum (UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Branch: $GITHUB_REF_NAME"
+            echo "Commit: $GITHUB_SHA"
+            echo "Job-Status: ${{ job.status }}"
+            echo "Emulator: Android 14 (API 34), google_apis, x86_64, Pixel-8-Profil"
+            echo
+            echo "=== Instrumentation-Ausgabe ==="
+            cat emulator-test-output.txt 2>/dev/null || echo "Keine Ausgabe vorhanden."
+          } > test-report/emulator-test.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f test-report/emulator-test.txt
+          if git diff --cached --quiet; then
+            echo "Keine Änderung am Testbericht."
+          else
+            git commit -m "Test: Emulator-Bericht für EinfachStart 91"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi

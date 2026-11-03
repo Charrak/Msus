@@ -1,5 +1,0 @@
-Zeit: 2026-11-03T20:54:14Z
-Runner: Linux
-Java: openjdk version "25.0.4.1" 2026-08-18 LTS
-Android-SDK: /usr/local/lib/android/sdk
-Ref: arena/f1d8df85-msus

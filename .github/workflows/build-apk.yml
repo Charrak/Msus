@@ -1,0 +1,108 @@
+name: EinfachStart 91 – APK bauen
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['arena/f1d8df85-msus']
+    paths:
+      - '.github/workflows/build-apk.yml'
+      - '.build-trigger'
+      - 'app/**'
+      - 'build.gradle.kts'
+      - 'settings.gradle.kts'
+      - 'gradle.properties'
+      - 'gradle/**'
+      - 'gradlew'
+      - 'gradlew.bat'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Debug-APK bauen und prüfen
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Java 17 einrichten
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android-SDK verfügbar machen
+        uses: android-actions/setup-android@v3
+
+      - name: SDK-Komponenten installieren
+        run: |
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools" > /dev/null
+          echo "::notice::Plattformen: $(ls "$ANDROID_HOME/platforms" | tr '\n' ' ')"
+          echo "::notice::Build-Tools: $(ls "$ANDROID_HOME/build-tools" | tr '\n' ' ')"
+
+      - name: Gradle-Cache vorbereiten
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: APK bauen
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: APK ausliefern und prüfen
+        run: |
+          set -euo pipefail
+          mkdir -p apk build-report
+          APP_APK=$(find app/build/outputs/apk/debug -name "*.apk" -type f | head -1)
+          test -n "$APP_APK"
+          cp "$APP_APK" apk/EinfachStart91.apk
+          AAPT="$ANDROID_HOME/build-tools/35.0.0/aapt"
+          if [ ! -x "$AAPT" ]; then AAPT=$(find "$ANDROID_HOME/build-tools" -name aapt -type f | head -1); fi
+          "$AAPT" dump badging apk/EinfachStart91.apk > build-report/badging.txt
+          "$AAPT" dump xmltree apk/EinfachStart91.apk AndroidManifest.xml > build-report/manifest.txt
+          grep -q "android.intent.action.MAIN" build-report/manifest.txt
+          grep -q "android.intent.category.HOME" build-report/manifest.txt
+          if grep -q "uses-permission: name='android.permission.INTERNET'" build-report/badging.txt; then
+            echo "::error::Unerwartete INTERNET-Berechtigung in der APK."
+            exit 1
+          fi
+          {
+            echo "EinfachStart 91 – Build-Bericht"
+            echo "Datum (UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Branch: $GITHUB_REF_NAME"
+            echo "Commit: $GITHUB_SHA"
+            echo "APK-Größe: $(stat -c%s apk/EinfachStart91.apk) Byte"
+            echo "SHA-256: $(sha256sum apk/EinfachStart91.apk | cut -d' ' -f1)"
+            echo
+            echo "=== Berechtigungen ==="
+            grep "uses-permission" build-report/badging.txt || echo "(keine)"
+            echo
+            echo "=== Launcher-Prüfung ==="
+            echo "MAIN + HOME im Manifest gefunden."
+            echo "Keine INTERNET-Berechtigung gefunden."
+          } > build-report/apk-info.txt
+          ls -lh apk/EinfachStart91.apk
+
+      - name: APK und Bericht auf den Branch committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f apk/EinfachStart91.apk build-report/badging.txt build-report/manifest.txt build-report/apk-info.txt
+          if git diff --cached --quiet; then
+            echo "Keine Änderung am Build-Ergebnis."
+          else
+            git commit -m "Build: EinfachStart91.apk und APK-Prüfbericht"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
+
+      - name: APK zusätzlich als Actions-Artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: EinfachStart91-APK
+          path: apk/EinfachStart91.apk
+          if-no-files-found: error
