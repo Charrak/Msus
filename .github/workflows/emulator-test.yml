@@ -65,29 +65,51 @@ jobs:
           ls -l /dev/kvm
 
       - name: Emulator starten, APK installieren und UI testen
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 35
-          target: google_apis
-          arch: x86_64
-          profile: pixel_8
-          avd-name: einfachstart91-test
-          cores: 2
-          ram-size: 2048M
-          disable-animations: true
-          emulator-options: -no-window -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot
-          script: |
-            set -o pipefail
+        run: |
+          set -euo pipefail
+          AVD_NAME=einfachstart91-test
+          SYS_IMAGE="system-images;android-35;google_apis;x86_64"
+          {
+            echo "=== Verfügbare Pixel-8-Profile ==="
+            avdmanager list device | grep -i "pixel 8" || true
+            echo "=== AVD anlegen ==="
+            if ! echo no | avdmanager create avd -n "$AVD_NAME" -k "$SYS_IMAGE" -d pixel_8 --force; then
+              echo "Pixel-8-Profil nicht verfügbar – Standardgerät verwenden"
+              echo no | avdmanager create avd -n "$AVD_NAME" -k "$SYS_IMAGE" --force
+            fi
+            echo "=== Emulator starten ==="
+            adb kill-server || true
+            adb start-server
+            emulator -avd "$AVD_NAME" -no-window -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -no-snapstorage -wipe-data -verbose > emulator-boot.log 2>&1 &
+            EMULATOR_PID=$!
+            echo "Emulator-PID: $EMULATOR_PID"
+            timeout 300 adb wait-for-device
+            BOOT=""
+            for i in $(seq 1 120); do
+              BOOT=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' || true)
+              if [ "$BOOT" = "1" ]; then break; fi
+              if ! kill -0 "$EMULATOR_PID" 2>/dev/null; then
+                echo "Emulator-Prozess vor Abschluss des Boots beendet."
+                break
+              fi
+              sleep 5
+            done
+            echo "sys.boot_completed=$BOOT"
+            test "$BOOT" = "1"
+            adb devices
             APP_APK=$(find app/build/outputs/apk/debug -name "*.apk" -type f | head -1)
             TEST_APK=$(find app/build/outputs/apk/androidTest -name "*.apk" -type f | head -1)
             test -n "$APP_APK" && test -n "$TEST_APK"
             echo "App-APK: $APP_APK"
             echo "Test-APK: $TEST_APK"
+            echo "=== APK-Installation ==="
             adb install -r "$APP_APK"
             adb install -r "$TEST_APK"
             adb shell pm dump de.einfachstart91.launcher | grep -m1 -A2 'android.intent.action.MAIN' || true
+            echo "=== Instrumentation-Test ==="
             adb shell am instrument -w -r -e debug false de.einfachstart91.launcher.test/androidx.test.runner.AndroidJUnitRunner | tee emulator-test-output.txt
             grep -q "OK (" emulator-test-output.txt
+          } 2>&1 | tee emulator-run.log
 
       - name: Testergebnis und Diagnose speichern
         if: always()
@@ -107,16 +129,24 @@ jobs:
             echo "=== Gradle-Build (Auszug) ==="
             tail -30 gradle-build.log 2>/dev/null || echo "Kein Gradle-Protokoll vorhanden."
             echo
+            echo "=== Emulator-/Installationsprotokoll (Auszug) ==="
+            tail -40 emulator-run.log 2>/dev/null || echo "Kein Emulator-Protokoll vorhanden."
+            echo
+            echo "=== Emulator-Bootprotokoll (Auszug) ==="
+            tail -40 emulator-boot.log 2>/dev/null || echo "Kein Bootprotokoll vorhanden."
+            echo
             echo "=== SDK-Installation (Auszug) ==="
             tail -20 sdk-install.log 2>/dev/null || echo "Kein SDK-Protokoll vorhanden."
           } > test-report/emulator-test.txt
           cp gradle-build.log test-report/gradle-build.log 2>/dev/null || true
           cp emulator-test-output.txt test-report/emulator-test-output.txt 2>/dev/null || true
+          cp emulator-run.log test-report/emulator-run.log 2>/dev/null || true
+          cp emulator-boot.log test-report/emulator-boot.log 2>/dev/null || true
           cp sdk-install.log test-report/sdk-install.log 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f test-report/emulator-test.txt
-          for LOG in test-report/gradle-build.log test-report/emulator-test-output.txt test-report/sdk-install.log; do
+          for LOG in test-report/gradle-build.log test-report/emulator-test-output.txt test-report/emulator-run.log test-report/emulator-boot.log test-report/sdk-install.log; do
             test -f "$LOG" && git add -f "$LOG"
           done
           if git diff --cached --quiet; then
