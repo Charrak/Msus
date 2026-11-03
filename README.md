@@ -12,7 +12,7 @@ EinfachStart 91 ersetzt den normalen Startbildschirm. Alles Wichtige ist mit ein
 - Build-Nachweis: [`build-report/apk-info.txt`](build-report/apk-info.txt)
 - Emulator-Test: [`test-report/emulator-test.txt`](test-report/emulator-test.txt)
 
-Die APK wurde am 3. November 2026 in GitHub Actions mit Android Gradle Plugin 8.7.3, Kotlin 2.0.21, Jetpack Compose und `compileSdk 35` tatsächlich gebaut. Anschließend wurde sie auf einem Android-15-Emulator (API 35, `google_apis`, x86_64, Pixel-8-Profil) per `adb` installiert und mit `OK (1 test)` instrumentiert geprüft. Erfolgreiche Läufe: Build `41723808804`, Emulator-Test `41728410475`.
+Die APK wurde am 3. November 2026 in GitHub Actions mit Android Gradle Plugin 8.7.3, Kotlin 2.0.21, Jetpack Compose und `compileSdk 35` tatsächlich gebaut. Anschließend wurde sie auf einem Android-15-Emulator (API 35, `google_apis`, x86_64, Pixel-8-Profil) per `adb` installiert und mit `OK (1 test)` instrumentiert geprüft. Erfolgreiche Läufe: Build `41723808804`, Emulator-Test `41728410475` sowie Finalcheck `41730536087`.
 
 ---
 

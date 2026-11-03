@@ -8,9 +8,9 @@ Die ausgelieferte APK wurde am 3. November 2026 in GitHub Actions auf `ubuntu-la
 | --- | --- |
 | Debug-APK | `apk/EinfachStart91.apk` |
 | Erfolgreicher Build-Lauf | `41723808804` |
-| Erfolgreicher Emulator-Lauf | `41728410475` |
+| Erfolgreiche Emulator-Läufe | `41728410475`, Finalcheck `41730536087` |
 | Badging, Manifest, Hash, Berechtigungen | `build-report/apk-info.txt`, `badging.txt`, `manifest.txt` |
-| Installations- und Instrumentationsprotokoll | `test-report/emulator-test.txt`, `emulator-test-output.txt` |
+| Installations- und Instrumentationsprotokoll | `test-report/emulator-test.txt`, `emulator-test-output.txt`, `emulator-run.log`, `sdk-install.log` |
 
 Der Build-Workflow hat `assembleDebug` ausgeführt und anschließend geprüft:
 
