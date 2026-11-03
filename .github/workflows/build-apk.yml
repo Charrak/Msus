@@ -18,6 +18,10 @@ on:
 permissions:
   contents: write
 
+env:
+  ANDROID_HOME: /usr/local/lib/android/sdk
+  ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+
 jobs:
   build:
     name: Debug-APK bauen und prüfen
@@ -31,13 +35,19 @@ jobs:
           fetch-depth: 0
 
       - name: Java 17 einrichten
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
 
-      - name: Android-SDK verfügbar machen
-        uses: android-actions/setup-android@v3
+      - name: Vorinstalliertes Android-SDK prüfen
+        run: |
+          echo "::notice::JAVA_HOME=$JAVA_HOME"
+          echo "::notice::ANDROID_HOME=$ANDROID_HOME"
+          echo "::notice::sdkmanager: $(command -v sdkmanager || echo nicht-im-PATH)"
+          echo "::notice::Plattformen vorher: $(ls "$ANDROID_HOME/platforms" 2>/dev/null | tr '\n' ' ')"
+          echo "::notice::Build-Tools vorher: $(ls "$ANDROID_HOME/build-tools" 2>/dev/null | tr '\n' ' ')"
+          sdkmanager --version
 
       - name: SDK-Komponenten installieren
         run: |
@@ -45,9 +55,6 @@ jobs:
           sdkmanager "platforms;android-35" "build-tools;35.0.0" "platform-tools" > /dev/null
           echo "::notice::Plattformen: $(ls "$ANDROID_HOME/platforms" | tr '\n' ' ')"
           echo "::notice::Build-Tools: $(ls "$ANDROID_HOME/build-tools" | tr '\n' ' ')"
-
-      - name: Gradle-Cache vorbereiten
-        uses: gradle/actions/setup-gradle@v4
 
       - name: APK bauen
         run: |
