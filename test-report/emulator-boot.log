@@ -1,1 +1,7 @@
-/home/runner/work/_temp/03715a48-861d-48ed-9b71-a9a75b8187c3.sh: line 15: emulator: command not found
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found AVD name 'einfachstart91-test'
+INFO         | path_getRootIniPath(einfachstart91-test) returned NULL
+ERROR        | Unknown AVD name [einfachstart91-test], use -list-avds to see valid list.
+ERROR        | HOME is defined but there is no file einfachstart91-test.ini in $HOME/.android/avd
+ERROR        | (Note: Directories are searched in the order $ANDROID_AVD_HOME, $ANDROID_SDK_HOME/avd and $HOME/.android/avd)
