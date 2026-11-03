@@ -1,9 +1,9 @@
 EinfachStart 91 – Build-Bericht
-Datum (UTC): 2026-11-03T22:59:55Z
+Datum (UTC): 2026-11-03T23:08:01Z
 Branch: arena/0245f451-msus
-Commit: 540416aaad400dc8e3aeb93c22048a714e157493
+Commit: 6512b6f1dd1449adb7e4bc4caca93cd3028db984
 APK-Größe: 24669529 Byte
-SHA-256: 255e0d6a4a53f8f1679e6996e832565745b9da623594390447bdd96ff3547e09
+SHA-256: 997bd76c6a257aaccd35dc2620cb99b194c41850706f7b3118cbdf09593e4eda
 
 === Berechtigungen ===
 uses-permission: name='android.permission.CALL_PHONE'
