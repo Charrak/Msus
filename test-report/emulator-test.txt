@@ -1,31 +1,116 @@
 EinfachStart 91 – Emulator-Testbericht
-Datum (UTC): 2026-11-03T22:15:42Z
+Datum (UTC): 2026-11-03T23:10:08Z
 Branch: arena/0245f451-msus
-GitHub-Run: 41728410475
-Job-Status: success
-Emulator: Android 15 (API 35), google_apis, x86_64, AVD mit pixel_8-Geräteprofil, KVM
-
-=== Build ===
-assembleDebug und assembleAndroidTest: BUILD SUCCESSFUL
-Gradle-Protokoll: test-report/gradle-build.log
-
-=== Boot und Installation ===
-sys.boot_completed=1
-Gerät: emulator-5554
-App-APK: app/build/outputs/apk/debug/app-debug.apk -> adb install -r: Success
-Test-APK: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk -> adb install -r: Success
-HOME-/MAIN-Registrierung im Package-Dump gefunden: de.einfachstart91.launcher/.MainActivity
+Commit: 6512b6f1dd1449adb7e4bc4caca93cd3028db984
+GitHub-Run: 41736241993 (Versuch 1)
+Job-Status: failure
+Emulator: Android 15 (API 35), google_apis, x86_64, Pixel-8-Profil
 
 === Instrumentation-Ausgabe ===
 INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
-INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+de.einfachstart91.launcher.LauncherInstrumentedTest:
+INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
 INSTRUMENTATION_STATUS_CODE: 0
-Time: 9.561
-OK (1 test)
+INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=kontaktSucheZeigtAlleKontakteAn
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
+	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
+	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
+	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
+
+INSTRUMENTATION_STATUS: stream=
+Error in kontaktSucheZeigtAlleKontakteAn(de.einfachstart91.launcher.LauncherInstrumentedTest):
+java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
+	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
+	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
+	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
+
+INSTRUMENTATION_STATUS: test=kontaktSucheZeigtAlleKontakteAn
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 16.983
+There was 1 failure:
+1) kontaktSucheZeigtAlleKontakteAn(de.einfachstart91.launcher.LauncherInstrumentedTest)
+java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + EditableText contains 'Kontakte gefunden' (ignoreCase: false) as substring)
+	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
+	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:359)
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
+	at de.einfachstart91.launcher.LauncherInstrumentedTest.kontaktSucheZeigtAlleKontakteAn(LauncherInstrumentedTest.kt:46)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
 INSTRUMENTATION_CODE: -1
 
-=== Geprüfte UI-Elemente ===
-EINFACHSTART 91, MEINE LIEBSTEN, TELEFON, NACHRICHTEN, NOTFALL – HILFE RUFEN.
+=== Installation und Boot (Auszug) ===
+sys.boot_completed=1
+List of devices attached
+App-APK: app/build/outputs/apk/debug/app-debug.apk
+Test-APK: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+Performing Streamed Install
+Success
+Performing Streamed Install
+Success
+      android.intent.action.MAIN:
+          Action: "android.intent.action.MAIN"
 
-Ausführliche Rohausgaben: test-report/emulator-test-output.txt und test-report/emulator-run.log.
+=== Gradle-Build (Abschluss) ===
+> Task :app:mergeExtDexDebugAndroidTest
+> Task :app:packageDebugAndroidTest
+> Task :app:createDebugAndroidTestApkListingFileRedirect
+> Task :app:assembleDebugAndroidTest
+> Task :app:assembleAndroidTest
+
+BUILD SUCCESSFUL in 2m 45s
+62 actionable tasks: 56 executed, 6 from cache
+
+=== Emulator-Bootprotokoll (Auszug) ===
+DEBUG   | ColorBuffer 164, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 166, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 167, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 24
+DEBUG   | Exited a RenderThread @0x56c3bca7ac40
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 23
+DEBUG   | Exited a RenderThread @0x56c3c5f55180
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 22
+DEBUG   | Started new RenderThread (total 22) @0x56c3bfa248c0
+DEBUG   | ColorBuffer 170, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 171, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 173, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 174, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 175, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 177, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 178, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 179, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 180, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 182, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 183, 1248x2568, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 12819456, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 184, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 23
+DEBUG   | Started new RenderThread (total 23) @0x56c3c5f54a80
+DEBUG   | ColorBuffer 187, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0x56c3bfa248c0
