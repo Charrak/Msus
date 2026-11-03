@@ -78,14 +78,19 @@ jobs:
               echo no | avdmanager create avd -n "$AVD_NAME" -k "$SYS_IMAGE" --force
             fi
             echo "=== Emulator starten ==="
+            EMULATOR_BIN="$ANDROID_HOME/emulator/emulator"
+            test -x "$EMULATOR_BIN"
+            export QT_QPA_PLATFORM=offscreen
+            export LD_LIBRARY_PATH="$ANDROID_HOME/emulator/lib64:$ANDROID_HOME/emulator/lib64/qt/lib:${LD_LIBRARY_PATH:-}"
+            "$EMULATOR_BIN" -version | head -3 || true
             adb kill-server || true
             adb start-server
-            emulator -avd "$AVD_NAME" -no-window -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -no-snapstorage -wipe-data -verbose > emulator-boot.log 2>&1 &
+            "$EMULATOR_BIN" -avd "$AVD_NAME" -no-window -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -no-snapstorage -wipe-data -verbose > emulator-boot.log 2>&1 &
             EMULATOR_PID=$!
             echo "Emulator-PID: $EMULATOR_PID"
-            timeout 300 adb wait-for-device
+            timeout 180 adb wait-for-device
             BOOT=""
-            for i in $(seq 1 120); do
+            for i in $(seq 1 60); do
               BOOT=$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r' || true)
               if [ "$BOOT" = "1" ]; then break; fi
               if ! kill -0 "$EMULATOR_PID" 2>/dev/null; then
