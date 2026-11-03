@@ -1,0 +1,16 @@
+EinfachStart 91 – Build-Bericht
+Datum (UTC): 2026-11-03T21:42:45Z
+Branch: arena/f1d8df85-msus
+Commit: 68c9b42d91216f9ce9615eca7486e09ce035bac2
+APK-Größe: 24587577 Byte
+SHA-256: f639ceed6d6b852583e7c0310d310b83ad9b2ca01167c23fb351c4a66f9c95df
+
+=== Berechtigungen ===
+uses-permission: name='android.permission.CALL_PHONE'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.ACCESS_WIFI_STATE'
+uses-permission: name='de.einfachstart91.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+
+=== Launcher-Prüfung ===
+MAIN + HOME im Manifest gefunden.
+Keine INTERNET-Berechtigung gefunden.
