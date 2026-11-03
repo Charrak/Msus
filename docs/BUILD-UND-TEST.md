@@ -16,7 +16,7 @@ Der Build-Workflow hat `assembleDebug` ausgeführt und anschließend geprüft:
 
 - `android.intent.action.MAIN` und `android.intent.category.HOME` sind im Manifest vorhanden,
 - **keine** `android.permission.INTERNET` ist in der APK enthalten; `READ_CONTACTS` ist ausschließlich für die bewusste Kontaktauswahl deklariert,
-- die APK ist 24.587.577 Byte groß; SHA-256 siehe `build-report/apk-info.txt`.
+- die APK ist 24.669.529 Byte groß; SHA-256 siehe `build-report/apk-info.txt`.
 
 Der Emulator-Workflow hat `assembleDebug` und `assembleAndroidTest` ausgeführt. Danach:
 

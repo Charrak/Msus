@@ -72,12 +72,24 @@ jobs:
         run: |
           mkdir -p build-report
           cp gradle-build.log build-report/gradle-build.log 2>/dev/null || echo "Kein Gradle-Protokoll vorhanden." > build-report/gradle-build.log
+          push_with_retry() {
+            for attempt in 1 2 3 4 5; do
+              git fetch origin "$GITHUB_REF_NAME"
+              git rebase "origin/$GITHUB_REF_NAME" || return 1
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then
+                return 0
+              fi
+              echo "Push-Versuch $attempt fehlgeschlagen, synchronisiere erneut."
+              sleep 5
+            done
+            return 1
+          }
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f build-report/gradle-build.log
           if ! git diff --cached --quiet; then
             git commit -m "Build: Gradle-Protokoll zur Fehlerdiagnose"
-            git push origin "HEAD:$GITHUB_REF_NAME"
+            push_with_retry
           fi
 
       - name: APK ausliefern und prüfen
@@ -121,6 +133,18 @@ jobs:
 
       - name: APK und Bericht auf den Branch committen
         run: |
+          push_with_retry() {
+            for attempt in 1 2 3 4 5; do
+              git fetch origin "$GITHUB_REF_NAME"
+              git rebase "origin/$GITHUB_REF_NAME" || return 1
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then
+                return 0
+              fi
+              echo "Push-Versuch $attempt fehlgeschlagen, synchronisiere erneut."
+              sleep 5
+            done
+            return 1
+          }
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f apk/EinfachStart91.apk build-report/badging.txt build-report/manifest.txt build-report/apk-info.txt
@@ -128,7 +152,7 @@ jobs:
             echo "Keine Änderung am Build-Ergebnis."
           else
             git commit -m "Build: EinfachStart91.apk und APK-Prüfbericht"
-            git push origin "HEAD:$GITHUB_REF_NAME"
+            push_with_retry
           fi
 
       - name: APK zusätzlich als Actions-Artefakt
