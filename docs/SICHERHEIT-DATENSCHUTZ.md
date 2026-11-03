@@ -4,6 +4,8 @@
 
 Die App deklariert **keine `android.permission.INTERNET`**. Damit kann sie schon technisch keine Kontakte, Fotos oder Nutzungsdaten an einen Server senden. Es gibt:
 
+Der Build-Bericht `build-report/apk-info.txt` bestätigt zusätzlich, dass die ausgelieferte APK keine `INTERNET`-Berechtigung enthält.
+
 - keine Analyse-/Tracking-Bibliothek,
 - keine Werbung,
 - keine In-App-Käufe,

@@ -5,7 +5,7 @@
 - Google Pixel 8 mit Android 10 oder neuer (empfohlen: Android 14/15).
 - Die Datei `apk/EinfachStart91.apk`.
 - Kein Root-Zugriff nötig.
-- Etwa 15 MB freier Speicher.
+- Etwa 30 MB freier Speicher (APK: 24.587.577 Byte).
 
 ## Weg 1: Installation direkt auf dem Gerät
 

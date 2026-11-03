@@ -12,7 +12,7 @@ EinfachStart 91 ersetzt den normalen Startbildschirm. Alles Wichtige ist mit ein
 - Build-Nachweis: [`build-report/apk-info.txt`](build-report/apk-info.txt)
 - Emulator-Test: [`test-report/emulator-test.txt`](test-report/emulator-test.txt)
 
-Die APK wird in GitHub Actions mit Android Gradle Plugin 8.7.3, Kotlin 2.0.21, Jetpack Compose und `compileSdk 35` tatsächlich gebaut. Anschließend wird sie auf einem Android-14-Emulator (API 34, x86_64, Pixel-Profil) installiert und mit einem Instrumentation-Test geprüft.
+Die APK wurde am 3. November 2026 in GitHub Actions mit Android Gradle Plugin 8.7.3, Kotlin 2.0.21, Jetpack Compose und `compileSdk 35` tatsächlich gebaut. Anschließend wurde sie auf einem Android-15-Emulator (API 35, `google_apis`, x86_64, Pixel-8-Profil) per `adb` installiert und mit `OK (1 test)` instrumentiert geprüft. Erfolgreiche Läufe: Build `41723808804`, Emulator-Test `41728410475`.
 
 ---
 
@@ -48,7 +48,7 @@ Die APK wird in GitHub Actions mit Android Gradle Plugin 8.7.3, Kotlin 2.0.21, J
 - **Sprache:** Kotlin
 - **UI:** Jetpack Compose (Material 3), Compose Compiler 2.0.21
 - **Min. Android:** API 29 (Android 10)
-- **Ziel:** API 35 (Android 15), getestet auf API 34
+- **Ziel:** API 35 (Android 15), installiert und getestet auf API 35 im Pixel-8-Emulatorprofil
 - **Speicherung:** `SharedPreferences` mit JSON + `StateFlow`; Kontaktfotos als JPEG in `filesDir/contact_photos`
 - **PIN:** zufälliges Salt + SHA-256-Prüfsumme, nie im Klartext
 - **Integration:** Android-Intents für Telefon, Anrufliste, SMS, WhatsApp, Galerie, Kamera und Systemeinstellungen

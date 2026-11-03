@@ -1,151 +1,31 @@
 EinfachStart 91 – Emulator-Testbericht
 Datum (UTC): 2026-11-03T22:15:42Z
 Branch: arena/f1d8df85-msus
-Commit: 5d8184cb4f63999b76ef88bf701460ae1f387967
+GitHub-Run: 41728410475
 Job-Status: success
-Emulator: Android 15 (API 35), google_apis, x86_64, Pixel-8-Profil
+Emulator: Android 15 (API 35), google_apis, x86_64, AVD mit pixel_8-Geräteprofil, KVM
+
+=== Build ===
+assembleDebug und assembleAndroidTest: BUILD SUCCESSFUL
+Gradle-Protokoll: test-report/gradle-build.log
+
+=== Boot und Installation ===
+sys.boot_completed=1
+Gerät: emulator-5554
+App-APK: app/build/outputs/apk/debug/app-debug.apk -> adb install -r: Success
+Test-APK: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk -> adb install -r: Success
+HOME-/MAIN-Registrierung im Package-Dump gefunden: de.einfachstart91.launcher/.MainActivity
 
 === Instrumentation-Ausgabe ===
 INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
-INSTRUMENTATION_STATUS: current=1
-INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
 INSTRUMENTATION_STATUS: numtests=1
-INSTRUMENTATION_STATUS: stream=
-de.einfachstart91.launcher.LauncherInstrumentedTest:
-INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
-INSTRUMENTATION_STATUS_CODE: 1
-INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
-INSTRUMENTATION_STATUS: current=1
-INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
-INSTRUMENTATION_STATUS: numtests=1
-INSTRUMENTATION_STATUS: stream=.
 INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
 INSTRUMENTATION_STATUS_CODE: 0
-INSTRUMENTATION_RESULT: stream=
-
 Time: 9.561
-
 OK (1 test)
-
-
 INSTRUMENTATION_CODE: -1
 
-=== Gradle-Build (Auszug) ===
-> Task :app:mergeDebugAndroidTestResources
-> Task :app:mergeDebugAndroidTestAssets
-> Task :app:packageDebug
-> Task :app:createDebugApkListingFileRedirect
-> Task :app:assembleDebug
-> Task :app:compressDebugAndroidTestAssets FROM-CACHE
-> Task :app:desugarDebugAndroidTestFileDependencies FROM-CACHE
-> Task :app:processDebugAndroidTestResources
-> Task :app:checkDebugAndroidTestDuplicateClasses
-> Task :app:compileDebugAndroidTestKotlin
-> Task :app:compileDebugAndroidTestJavaWithJavac NO-SOURCE
-> Task :app:dexBuilderDebugAndroidTest
-> Task :app:mergeDebugAndroidTestGlobalSynthetics FROM-CACHE
-> Task :app:processDebugAndroidTestJavaRes
-> Task :app:mergeLibDexDebugAndroidTest FROM-CACHE
-> Task :app:mergeDebugAndroidTestJniLibFolders
-> Task :app:mergeProjectDexDebugAndroidTest
-> Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
-> Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
-> Task :app:validateSigningDebugAndroidTest
-> Task :app:writeDebugAndroidTestSigningConfigVersions
-> Task :app:mergeDebugAndroidTestJavaResource
-> Task :app:mergeExtDexDebugAndroidTest
-> Task :app:packageDebugAndroidTest
-> Task :app:createDebugAndroidTestApkListingFileRedirect
-> Task :app:assembleDebugAndroidTest
-> Task :app:assembleAndroidTest
+=== Geprüfte UI-Elemente ===
+EINFACHSTART 91, MEINE LIEBSTEN, TELEFON, NACHRICHTEN, NOTFALL – HILFE RUFEN.
 
-BUILD SUCCESSFUL in 2m 43s
-62 actionable tasks: 56 executed, 6 from cache
-
-=== Emulator-/Installationsprotokoll (Auszug) ===
-* daemon started successfully
-Emulator-PID: 3499
-sys.boot_completed=1
-List of devices attached
-emulator-5554	device
-
-App-APK: app/build/outputs/apk/debug/app-debug.apk
-Test-APK: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
-=== APK-Installation ===
-Performing Streamed Install
-Success
-Performing Streamed Install
-Success
-      android.intent.action.MAIN:
-        d76dad de.einfachstart91.launcher/.MainActivity filter ff298e2
-          Action: "android.intent.action.MAIN"
-=== Instrumentation-Test ===
-INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
-INSTRUMENTATION_STATUS: current=1
-INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
-INSTRUMENTATION_STATUS: numtests=1
-INSTRUMENTATION_STATUS: stream=
-de.einfachstart91.launcher.LauncherInstrumentedTest:
-INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
-INSTRUMENTATION_STATUS_CODE: 1
-INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
-INSTRUMENTATION_STATUS: current=1
-INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
-INSTRUMENTATION_STATUS: numtests=1
-INSTRUMENTATION_STATUS: stream=.
-INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
-INSTRUMENTATION_STATUS_CODE: 0
-INSTRUMENTATION_RESULT: stream=
-
-Time: 9.561
-
-OK (1 test)
-
-
-INSTRUMENTATION_CODE: -1
-
-=== Emulator-Bootprotokoll (Auszug) ===
-DEBUG   | ColorBuffer 134, 63x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16384, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 17
-DEBUG   | Started new RenderThread (total 17) @0x645a028e8540
-DEBUG   | ColorBuffer 137, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 18
-DEBUG   | Started new RenderThread (total 18) @0x6459f8e73dc0
-DEBUG   | ColorBuffer 140, 63x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16384, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 19
-DEBUG   | Started new RenderThread (total 19) @0x6459ffc64c40
-DEBUG   | ColorBuffer 143, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 144, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 146, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 147, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 20
-DEBUG   | Started new RenderThread (total 20) @0x6459f8e73500
-DEBUG   | ColorBuffer 150, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 21
-DEBUG   | Started new RenderThread (total 21) @0x6459f8e73c00
-DEBUG   | ColorBuffer 151, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 153, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 154, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 155, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 157, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 158, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 159, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 22
-DEBUG   | Started new RenderThread (total 22) @0x645a02347dc0
-DEBUG   | ColorBuffer 162, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 23
-DEBUG   | Started new RenderThread (total 23) @0x6459ece6e1c0
-DEBUG   | ColorBuffer 163, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 165, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 166, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-VERBOSE | Created RenderThread. Active RenderThreads: 24
-DEBUG   | Started new RenderThread (total 24) @0x6459ece6e540
-DEBUG   | ColorBuffer 169, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 170, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 172, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 173, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
-DEBUG   | ColorBuffer 174, 864x1920, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 6635520, type: 0, props: 15 / 1]
-
-=== SDK-Installation (Auszug) ===
-Loading package information...                                                  Loading local repository...                                                     [                                       ] 3% Loading local repository...        [                                       ] 3% Fetch remote repository...         [=                                      ] 3% Fetch remote repository...         [=                                      ] 4% Fetch remote repository...         [=                                      ] 5% Fetch remote repository...         [==                                     ] 5% Fetch remote repository...         [==                                     ] 6% Fetch remote repository...         [==                                     ] 7% Fetch remote repository...         [==                                     ] 7% Computing updates...               [===                                    ] 8% Computing updates...               [===                                    ] 10% Computing updates...              [===                                    ] 10% Installing Android Emulator       [===                                    ] 10% Downloading emulator-linux_x64-167[====                                   ] 10% Downloading emulator-linux_x64-167[====                                   ] 11% Downloading emulator-linux_x64-167[====                                   ] 12% Downloading emulator-linux_x64-167[=====                                  ] 13% Downloading emulator-linux_x64-167[=====                                  ] 14% Downloading emulator-linux_x64-167[=====                                  ] 15% Downloading emulator-linux_x64-167[======                                 ] 15% Downloading emulator-linux_x64-167[======                                 ] 16% Downloading emulator-linux_x64-167[======                                 ] 17% Downloading emulator-linux_x64-167[=======                                ] 18% Downloading emulator-linux_x64-167[=======                                ] 19% Downloading emulator-linux_x64-167[=======                                ] 20% Downloading emulator-linux_x64-167[========                               ] 20% Downloading emulator-linux_x64-167[========                               ] 21% Downloading emulator-linux_x64-167[========                               ] 21% Unzipping...                      [========                               ] 21% Unzipping... emulator/            [========                               ] 21% Unzipping... emulator/resources/  [========                               ] 21% Unzipping... emulator/qsn         [========                               ] 21% Unzipping... emulator/emulator    [========                               ] 21% Unzipping... emulator/netsimd     [========                               ] 22% Unzipping... emulator/netsimd     [========                               ] 22% Unzipping... emulator/bin64/      [========                               ] 22% Unzipping... emulator/qemu/       [========                               ] 22% Unzipping... emulator/NOTICE.txt  [========                               ] 22% Unzipping... emulator/crashpad_han[========                               ] 22% Unzipping... emulator/source.prope[========                               ] 22% Unzipping... emulator/nimble_bridg[========                               ] 22% Unzipping... emulator/LICENSE     [========                               ] 22% Unzipping... emulator/lib/        [========                               ] 22% Unzipping... emulator/qemu-img    [========                               ] 22% Unzipping... emulator/include/    [========                               ] 22% Unzipping... emulator/NOTICE.csv  [========                               ] 22% Unzipping... emulator/lib64/      [========                               ] 22% Unzipping... emulator/emulator-che[========                               ] 22% Unzipping... emulator/crashreport [========                               ] 22% Unzipping... emulator/mksdcard    [========                               ] 22% Unzipping... emulator/resources/To[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/To[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/To[========                               ] 22% Unzipping... emulator/resources/ma[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/sk[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/ma[========                               ] 22% Unzipping... emulator/resources/po[========                               ] 22% Unzipping... emulator/resources/ma[=========                              ] 23% Unzipping... emulator/resources/ma[=========                              ] 23% Unzipping... emulator/resources/sk[=========                              ] 23% Unzipping... emulator/resources/ma[=========                              ] 23% Unzipping... emulator/bin64/e2fsck[=========                              ] 23% Unzipping... emulator/bin64/fsck.e[=========                              ] 23% Unzipping... emulator/bin64/tune2f[=========                              ] 23% Unzipping... emulator/bin64/resize[=========                              ] 23% Unzipping... emulator/bin64/mkfs.e[=========                              ] 23% Unzipping... emulator/qemu/linux-x[=========                              ] 24% Unzipping... emulator/qemu/linux-x[=========                              ] 25% Unzipping... emulator/qemu/linux-x[==========                             ] 25% Unzipping... emulator/qemu/linux-x[==========                             ] 25% Unzipping... emulator/lib/emulator[==========                             ] 25% Unzipping... emulator/lib/rtc_serv[==========                             ] 25% Unzipping... emulator/lib/advanced[==========                             ] 25% Unzipping... emulator/lib/cmake/  [==========                             ] 25% Unzipping... emulator/lib/emulator[==========                             ] 25% Unzipping... emulator/lib/control_[==========                             ] 25% Unzipping... emulator/lib/emulated[==========                             ] 25% Unzipping... emulator/lib/rtc_serv[==========                             ] 25% Unzipping... emulator/lib/emu-orig[==========                             ] 25% Unzipping... emulator/lib/hardware[==========                             ] 25% Unzipping... emulator/lib/pkgconfi[==========                             ] 25% Unzipping... emulator/lib/pc-bios/[==========                             ] 25% Unzipping... emulator/lib/snapshot[==========                             ] 25% Unzipping... emulator/lib/adb_serv[==========                             ] 25% Unzipping... emulator/lib/hostapd.[==========                             ] 25% Unzipping... emulator/lib/grpc_end[==========                             ] 25% Unzipping... emulator/lib/ca-bundl[==========                             ] 25% Unzipping... emulator/lib/ui_contr[==========                             ] 25% Unzipping... emulator/lib/snapshot[==========                             ] 25% Unzipping... emulator/lib/ice_conf[==========                             ] 25% Unzipping... emulator/lib/libflatb[==========                             ] 26% Unzipping... emulator/lib/libflatb[==========                             ] 26% Unzipping... emulator/lib/emulator[==========                             ] 26% Unzipping... emulator/lib/waterfal[==========                             ] 26% Unzipping... emulator/lib/emulated[==========                             ] 26% Unzipping... emulator/lib/cmake/fl[==========                             ] 26% Unzipping... emulator/lib/pkgconfi[==========                             ] 26% Unzipping... emulator/lib/pc-bios/[==========                             ] 26% Unzipping... emulator/include/flat[==========                             ] 26% Unzipping... emulator/lib64/libgli[==========                             ] 26% Unzipping... emulator/lib64/libpro[==========                             ] 26% Unzipping... emulator/lib64/qt/   [==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libgfx[==========                             ] 26% Unzipping... emulator/lib64/gles_l[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/vulkan[==========                             ] 26% Unzipping... emulator/lib64/gles_s[==========                             ] 26% Unzipping... emulator/lib64/libemu[==========                             ] 26% Unzipping... emulator/lib64/libpro[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libtcm[==========                             ] 26% Unzipping... emulator/lib64/libima[==========                             ] 26% Unzipping... emulator/lib64/libc++[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libabs[==========                             ] 26% Unzipping... emulator/lib64/gles_a[==========                             ] 26% Unzipping... emulator/lib64/libsha[==========                             ] 26% Unzipping... emulator/lib64/libc++[==========                             ] 26% Unzipping... emulator/lib64/qt/res[==========                             ] 26% Unzipping... emulator/lib64/qt/lib[==========                             ] 26% Unzipping... emulator/lib64/qt/tra[==========                             ] 26% Unzipping... emulator/lib64/qt/plu[==========                             ] 26% Unzipping... emulator/lib64/qt/res[==========                             ] 27% Unzipping... emulator/lib64/qt/res[==========                             ] 27% Unzipping... emulator/lib64/qt/lib[===========                            ] 28% Unzipping... emulator/lib64/qt/lib[===========                            ] 29% Unzipping... emulator/lib64/qt/lib[===========                            ] 30% Unzipping... emulator/lib64/qt/lib[============                           ] 30% Unzipping... emulator/lib64/qt/lib[============                           ] 30% Unzipping... emulator/lib64/qt/tra[============                           ] 30% Unzipping... emulator/lib64/qt/plu[============                           ] 30% Unzipping... emulator/lib64/gles_l[============                           ] 31% Unzipping... emulator/lib64/gles_l[============                           ] 31% Unzipping... emulator/lib64/vulkan[============                           ] 32% Unzipping... emulator/lib64/vulkan[============                           ] 32% Unzipping... emulator/lib64/gles_s[============                           ] 32% Unzipping... emulator/lib64/gles_a[=============                          ] 33% Unzipping... emulator/lib64/gles_a[=====================                  ] 55% Unzipping... emulator/lib64/gles_a[=====================                  ] 55% Installing Google APIs Intel x86_6[=====================                  ] 55% Downloading x86_64-35_r09.zip... e[======================                 ] 55% Downloading x86_64-35_r09.zip... e[======================                 ] 56% Downloading x86_64-35_r09.zip... e[======================                 ] 57% Downloading x86_64-35_r09.zip... e[=======================                ] 58% Downloading x86_64-35_r09.zip... e[=======================                ] 59% Downloading x86_64-35_r09.zip... e[=======================                ] 60% Downloading x86_64-35_r09.zip... e[========================               ] 60% Downloading x86_64-35_r09.zip... e[========================               ] 61% Downloading x86_64-35_r09.zip... e[========================               ] 62% Downloading x86_64-35_r09.zip... e[=========================              ] 63% Downloading x86_64-35_r09.zip... e[=========================              ] 64% Downloading x86_64-35_r09.zip... e[=========================              ] 65% Downloading x86_64-35_r09.zip... e[==========================             ] 65% Downloading x86_64-35_r09.zip... e[==========================             ] 66% Downloading x86_64-35_r09.zip... e[==========================             ] 66% Unzipping... emulator/lib64/gles_a[==========================             ] 66% Unzipping... x86_64/NOTICE.txt    [==========================             ] 66% Unzipping... x86_64/VerifiedBootPa[==========================             ] 66% Unzipping... x86_64/advancedFeatur[==========================             ] 66% Unzipping... x86_64/build.prop    [==========================             ] 66% Unzipping... x86_64/encryptionkey.[==========================             ] 66% Unzipping... x86_64/kernel-ranchu [==========================             ] 66% Unzipping... x86_64/kernel_cmdline[==========================             ] 66% Unzipping... x86_64/ramdisk.img   [==========================             ] 66% Unzipping... x86_64/source.propert[==========================             ] 66% Unzipping... x86_64/system.img    [==========================             ] 67% Unzipping... x86_64/system.img    [===========================            ] 68% Unzipping... x86_64/system.img    [===========================            ] 69% Unzipping... x86_64/system.img    [===========================            ] 70% Unzipping... x86_64/system.img    [============================           ] 70% Unzipping... x86_64/system.img    [============================           ] 71% Unzipping... x86_64/system.img    [============================           ] 72% Unzipping... x86_64/system.img    [=============================          ] 73% Unzipping... x86_64/system.img    [=============================          ] 74% Unzipping... x86_64/system.img    [=============================          ] 75% Unzipping... x86_64/system.img    [==============================         ] 75% Unzipping... x86_64/system.img    [==============================         ] 76% Unzipping... x86_64/system.img    [==============================         ] 77% Unzipping... x86_64/system.img    [==============================         ] 77% Unzipping... x86_64/vendor.img    [==============================         ] 77% Unzipping... x86_64/data/empty_dat[==============================         ] 77% Unzipping... x86_64/data/local.pro[==============================         ] 77% Unzipping... x86_64/data/misc/Gold[==============================         ] 77% Unzipping... x86_64/data/misc/apns[==============================         ] 77% Unzipping... x86_64/data/misc/emul[==============================         ] 77% Unzipping... x86_64/data/misc/mode[==============================         ] 77% Unzipping... x86_64/data/misc/pixe[==============================         ] 78% Unzipping... x86_64/data/misc/pixe[=======================================] 100% Unzipping... x86_64/data/misc/pix
-
+Ausführliche Rohausgaben: test-report/emulator-test-output.txt und test-report/emulator-run.log.

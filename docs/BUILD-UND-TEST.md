@@ -1,29 +1,31 @@
 # Build und Test
 
-## Was tatsächlich gebaut und geprüft wird
+## Tatsächlich ausgeführter Build und Gerätetest
 
-Die Sandbox dieses Auftrags hat keinen direkten Zugriff auf `dl.google.com`, Maven Central oder einen lokalen Android-Emulator. Deshalb wird die APK im **GitHub-Actions-Runner** des Repositories gebaut. Der Runner hat Java, das Android-SDK und Internetzugriff auf die Maven-Repositories. Er schreibt die fertige APK und die Prüfberichte automatisch auf denselben Branch zurück.
+Die ausgelieferte APK wurde am 3. November 2026 in GitHub Actions auf `ubuntu-latest` gebaut, auf einem Android-Emulator installiert und mit einem Instrumentation-Test geprüft. Die Ergebnisse liegen im Repository.
 
-|Nachweis | Datei |
+| Nachweis | Datei / Lauf |
 | --- | --- |
-| Gebaute APK | `apk/EinfachStart91.apk` |
+| Debug-APK | `apk/EinfachStart91.apk` |
+| Erfolgreicher Build-Lauf | `41723808804` |
+| Erfolgreicher Emulator-Lauf | `41728410475` |
 | Badging, Manifest, Hash, Berechtigungen | `build-report/apk-info.txt`, `badging.txt`, `manifest.txt` |
-| Emulator-Test | `test-report/emulator-test.txt` |
+| Installations- und Instrumentationsprotokoll | `test-report/emulator-test.txt`, `emulator-test-output.txt` |
 
-Der Build-Workflow prüft automatisiert:
+Der Build-Workflow hat `assembleDebug` ausgeführt und anschließend geprüft:
 
-- `android.intent.action.MAIN` und `android.intent.category.HOME` im Manifest,
-- **keine** `android.permission.INTERNET`,
-- erfolgreiche `assembleDebug`.
+- `android.intent.action.MAIN` und `android.intent.category.HOME` sind im Manifest vorhanden,
+- **keine** `android.permission.INTERNET` ist in der APK enthalten,
+- die APK ist 24.587.577 Byte groß; SHA-256 siehe `build-report/apk-info.txt`.
 
-Der Emulator-Workflow:
+Der Emulator-Workflow hat `assembleDebug` und `assembleAndroidTest` ausgeführt. Danach:
 
-- baut `assembleDebug` und `assembleAndroidTest`,
-- startet einen Android-14-Emulator (API 34, `google_apis`, `x86_64`, Pixel-8-Profil) mit KVM,
-- installiert beide APKs per `adb`,
-- führt `LauncherInstrumentedTest` aus,
-- prüft, dass Titel, „MEINE LIEBSTEN“, TELEFON, NACHRICHTEN und die Notfalltaste sichtbar sind,
-- schreibt die Instrumentation-Ausgabe in `test-report/emulator-test.txt`.
+- Android 15, API 35, `google_apis`, x86_64, AVD mit `pixel_8`-Geräteprofil und KVM,
+- `libpulse0` für den Emulator installiert, `ANDROID_AVD_HOME` auf `$HOME/.android/avd` fixiert,
+- Emulator direkt gestartet und `sys.boot_completed=1` abgewartet,
+- App-APK und Test-APK mit `adb install -r` installiert – jeweils `Success`,
+- `LauncherInstrumentedTest` mit `adb shell am instrument` ausgeführt: **`OK (1 test)`**,
+- geprüft, dass Titel, „MEINE LIEBSTEN“, TELEFON, NACHRICHTEN und die Notfalltaste sichtbar sind.
 
 ## Lokal mit Android Studio bauen
 
@@ -77,5 +79,5 @@ adb shell am instrument -w -r -e debug false \
 
 - **„SDK location not found“:** `local.properties` mit `sdk.dir=/pfad/zum/Android/sdk` anlegen oder `ANDROID_HOME` setzen.
 - **Gradle-Download schlägt fehl:** `gradle/wrapper/gradle-wrapper.properties` zeigt auf `services.gradle.org`; im Firmennetz ggf. Proxy oder lokale Distribution verwenden.
-- **Emulator startet nicht:** KVM/Linux bzw. Hardwarebeschleunigung prüfen; im CI übernimmt `reactivecircus/android-emulator-runner` die Einrichtung.
+- **Emulator startet nicht:** Auf Linux KVM/Hardwarebeschleunigung prüfen. Der CI-Workflow installiert `libpulse0`, setzt `ANDROID_AVD_HOME` und startet `$ANDROID_HOME/emulator/emulator` direkt.
 - **Test findet Text nicht:** Schriftgrößen-Faktor oder `fontScale` prüfen; der Test sucht exakt `EINFACHSTART 91` und `NOTFALL – HILFE RUFEN`.

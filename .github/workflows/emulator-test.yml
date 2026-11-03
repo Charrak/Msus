@@ -136,33 +136,26 @@ jobs:
             echo "Datum (UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             echo "Branch: $GITHUB_REF_NAME"
             echo "Commit: $GITHUB_SHA"
+            echo "GitHub-Run: ${{ github.run_id }} (Versuch ${{ github.run_attempt }})"
             echo "Job-Status: ${{ job.status }}"
             echo "Emulator: Android 15 (API 35), google_apis, x86_64, Pixel-8-Profil"
             echo
             echo "=== Instrumentation-Ausgabe ==="
             cat emulator-test-output.txt 2>/dev/null || echo "Keine Ausgabe vorhanden."
             echo
-            echo "=== Gradle-Build (Auszug) ==="
-            tail -30 gradle-build.log 2>/dev/null || echo "Kein Gradle-Protokoll vorhanden."
+            echo "=== Installation und Boot (Auszug) ==="
+            grep -E 'sys.boot_completed|List of devices|App-APK|Test-APK|Performing Streamed Install|Success|android.intent.action.MAIN' emulator-run.log 2>/dev/null | tail -20 || echo "Kein Installationsprotokoll vorhanden."
             echo
-            echo "=== Emulator-/Installationsprotokoll (Auszug) ==="
-            tail -40 emulator-run.log 2>/dev/null || echo "Kein Emulator-Protokoll vorhanden."
-            echo
-            echo "=== Emulator-Bootprotokoll (Auszug) ==="
-            tail -40 emulator-boot.log 2>/dev/null || echo "Kein Bootprotokoll vorhanden."
-            echo
-            echo "=== SDK-Installation (Auszug) ==="
-            tail -20 sdk-install.log 2>/dev/null || echo "Kein SDK-Protokoll vorhanden."
+            echo "=== Gradle-Build (Abschluss) ==="
+            tail -8 gradle-build.log 2>/dev/null || echo "Kein Gradle-Protokoll vorhanden."
           } > test-report/emulator-test.txt
           cp gradle-build.log test-report/gradle-build.log 2>/dev/null || true
           cp emulator-test-output.txt test-report/emulator-test-output.txt 2>/dev/null || true
           cp emulator-run.log test-report/emulator-run.log 2>/dev/null || true
-          cp emulator-boot.log test-report/emulator-boot.log 2>/dev/null || true
-          cp sdk-install.log test-report/sdk-install.log 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f test-report/emulator-test.txt
-          for LOG in test-report/gradle-build.log test-report/emulator-test-output.txt test-report/emulator-run.log test-report/emulator-boot.log test-report/sdk-install.log; do
+          for LOG in test-report/gradle-build.log test-report/emulator-test-output.txt test-report/emulator-run.log; do
             test -f "$LOG" && git add -f "$LOG"
           done
           if git diff --cached --quiet; then
