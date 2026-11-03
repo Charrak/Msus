@@ -1,0 +1,38 @@
+name: CI-Probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    name: Runner-Umgebung prüfen
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Probe-Datei schreiben und zurücksenden
+        run: |
+          mkdir -p .ci
+          {
+            echo "Zeit: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Runner: $RUNNER_OS"
+            echo "Java: $(java -version 2>&1 | head -1)"
+            echo "Android-SDK: ${ANDROID_HOME:-nicht gesetzt}"
+            echo "Ref: $GITHUB_REF_NAME"
+          } > .ci/probe.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ci/probe.txt
+          if git diff --cached --quiet; then
+            echo "Keine Änderung nötig."
+          else
+            git commit -m "CI-Probe: Runner-Umgebung bestätigt"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
