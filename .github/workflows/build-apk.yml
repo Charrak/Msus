@@ -5,9 +5,10 @@ on:
   push:
     branches: ['arena/0245f451-msus']
     paths:
-      - '.github/workflows/build-apk.yml'
       - '.build-trigger'
-      - 'app/**'
+      - 'app/src/main/**'
+      - 'app/build.gradle.kts'
+      - 'app/proguard-rules.pro'
       - 'build.gradle.kts'
       - 'settings.gradle.kts'
       - 'gradle.properties'

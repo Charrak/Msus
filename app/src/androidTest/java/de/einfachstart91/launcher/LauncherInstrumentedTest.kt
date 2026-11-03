@@ -43,6 +43,6 @@ class LauncherInstrumentedTest {
         composeRule.onNodeWithText("KONTAKTE").performClick()
         composeRule.waitForIdle()
         composeRule.onNodeWithText("ALLE KONTAKTE DURCHSUCHEN").assertIsDisplayed()
-        composeRule.onNodeWithText("Kontakte gefunden", substring = true).assertIsDisplayed()
+        composeRule.onNodeWithText("KONTAKT ANRUFEN").assertIsDisplayed()
     }
 }
