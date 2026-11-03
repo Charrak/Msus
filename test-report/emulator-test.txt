@@ -1,22 +1,54 @@
 EinfachStart 91 – Emulator-Testbericht
-Datum (UTC): 2026-11-03T22:23:03Z
+Datum (UTC): 2026-11-03T22:29:35Z
 Branch: arena/f1d8df85-msus
-Commit: b0af5bc6d1b86f04a27f519669175355bcd2575d
-GitHub-Run: 41729723356 (Versuch 1)
-Job-Status: failure
+Commit: 6a11ce86dfd0c9e6644a0d8e35a3e3242a2dd810
+GitHub-Run: 41730536087 (Versuch 1)
+Job-Status: success
 Emulator: Android 15 (API 35), google_apis, x86_64, Pixel-8-Profil
 
 === Instrumentation-Ausgabe ===
-Keine Ausgabe vorhanden.
+INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+de.einfachstart91.launcher.LauncherInstrumentedTest:
+INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=de.einfachstart91.launcher.LauncherInstrumentedTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 13.399
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
 
 === Installation und Boot (Auszug) ===
+sys.boot_completed=1
+List of devices attached
+App-APK: app/build/outputs/apk/debug/app-debug.apk
+Test-APK: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+Performing Streamed Install
+Success
+Performing Streamed Install
+Success
+      android.intent.action.MAIN:
+          Action: "android.intent.action.MAIN"
 
 === Gradle-Build (Abschluss) ===
-> Task :app:mergeExtDexDebugAndroidTest
+> Task :app:mergeDebugAndroidTestJavaResource
 > Task :app:packageDebugAndroidTest
 > Task :app:createDebugAndroidTestApkListingFileRedirect
 > Task :app:assembleDebugAndroidTest
 > Task :app:assembleAndroidTest
 
-BUILD SUCCESSFUL in 2m 40s
+BUILD SUCCESSFUL in 2m 31s
 62 actionable tasks: 56 executed, 6 from cache

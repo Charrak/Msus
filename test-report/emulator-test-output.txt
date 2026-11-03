@@ -15,7 +15,7 @@ INSTRUMENTATION_STATUS: test=startbildschirmZeigtAlleWichtigenElemente
 INSTRUMENTATION_STATUS_CODE: 0
 INSTRUMENTATION_RESULT: stream=
 
-Time: 9.561
+Time: 13.399
 
 OK (1 test)
 
